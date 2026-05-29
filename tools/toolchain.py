@@ -1,6 +1,3 @@
-import argparse
-import shutil
-
 from tools.configuration import DOCS_DIR, GENERATED_DOCS_DIR, XSD_FILE_PATH, GENERATED_TABLES_DIR, TEMPLATES_DIR
 from tools.expand_docs.expand_docs import expand_docs
 from tools.md2html.md2html import generate_html_files
