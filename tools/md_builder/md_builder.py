@@ -10,7 +10,7 @@ import os
 
 from lxml import etree
 
-from tools.configuration import TEMPLATES_DIR, GENERATED_TABLES_DIR, XSD_FILE_PATH
+from tools.configuration import TEMPLATES_DIR, XSD_FILE_PATH, SITE_TABLES_DIR
 
 def load_xsd_type_info(xsd_path):
     """Load type and cardinality information from XSD"""
@@ -763,7 +763,7 @@ def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(description='Generate markdown documentation from NeTEx templates')
     parser.add_argument('-i', '--input', default=TEMPLATES_DIR, help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
-    parser.add_argument('-o', '--output', default=GENERATED_TABLES_DIR, help=f'Output folder for markdown files (Default = {GENERATED_TABLES_DIR})')
+    parser.add_argument('-o', '--output', default=SITE_TABLES_DIR, help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
     parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH, help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
     return parser.parse_args()
 
