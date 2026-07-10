@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimeDemandType  id="generated" version="1">
+  <!-- TimeDemandType assigns a timing behaviour to a ServiceJourney -->
+  <Description>high demand</Description>
+  <!-- Can be used, if a decription exists what this pattern doe -->
+  <runTimes>
+    <!-- The run time on the TimingLinks -->
+    <JourneyRunTime id="generated" version="1">
+      <TimingLinkRef ref="generated" version="1">
+        <!-- The timing link that is ued here and that that does have a given run time -->
+      </TimingLinkRef>
+      <RunTime>PT5M</RunTime>
+    </JourneyRunTime>
+  </runTimes>
+  <waitTimes>
+    <!-- we only need the wait times, when they are >0 -->
+    <JourneyWaitTime id="generated" version="1">
+      <!-- Relevant waiting times at the stop -->
+      <ScheduledStopPointRef ref="sloid" version="1">
+        <!-- Which Quay is referenced -->
+      </ScheduledStopPointRef>
+      <WaitTime>PT2M</WaitTime>
+    </JourneyWaitTime>
+  </waitTimes>
+</TimeDemandType>

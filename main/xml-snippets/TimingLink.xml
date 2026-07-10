@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimingLink  id="generated" version="1">
+  <!-- A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary -->
+  <FromPointRef ref="sloid1" version="1"/>
+  <ToPointRef ref="sloid 2" version="1"/>
+  <OperationalContextRef ref="generated" version="1">
+    <!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point -->
+  </OperationalContextRef>
+</TimingLink>

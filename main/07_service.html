@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Services | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Services" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/07_service.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/07_service.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Services" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Services","url":"https://opentdatach.github.io/netexRgTest/07_service.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Services</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In this chapter:</p>
+<ul>
+  <li><a href="#line">Line</a></li>
+  <li><a href="#destinationdisplay">DestinationDisplay</a></li>
+  <li><a href="#scheduledstoppoint">ScheduledStopPoint</a></li>
+  <li><a href="#passengerstopassignment">PassengerStopAssignment</a></li>
+  <li><a href="**TODO** #80">PassengerBoardingPositionAssignment</a></li>
+  <li><a href="#defaultconnection">DefaultConnection</a></li>
+  <li><a href="#siteconnection">SiteConnection</a></li>
+  <li><a href="#timinglink">TimingLink</a></li>
+  <li><a href="#servicejourneypattern">ServiceJourneyPattern</a></li>
+  <li><a href="#timedemandtype">TimeDemandType</a></li>
+  <li><a href="#Notice">Notice</a></li>
+  <li><a href="#NoticeAssignment">NoticeAssignment</a></li>
+</ul>
+
+<h2 id="serviceframe">ServiceFrame</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#serviceframe">Glossary definition</a></em></p>
+
+<h3 id="purpose">Purpose</h3>
+<p>Contains the network and route definitions - <code class="language-plaintext highlighter-rouge">Line</code>s, <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s, <code class="language-plaintext highlighter-rouge">DestinationDisplay</code>s, and <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s.</p>
+
+<p>See the following class diagram for the most important objects of the <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and their relationships to the other frames.</p>
+
+<pre><code class="language-mermaid">classDiagram
+    %% Styles
+    classDef frame fill:#FFF8E1,stroke:#FFB300;
+    classDef contained fill:#E8F4FF,stroke:#1E90FF;
+    classDef external fill:#F6F6F6,stroke:#AAAAAA;
+
+    %% Frame
+    class ServiceFrame {
+    }
+
+    %% Contained elements
+    class Line {
+
+        
+    }
+
+    class DestinationDisplay {
+
+
+    }
+
+    class ScheduledStopPoint {
+    }
+
+    class PassengerStopAssignment {
+    }
+
+    class PassengerBoardingPositionAssignment {
+    }
+
+    class DefaultConnection {
+    }
+
+    class SiteConnection {
+    }
+
+    class Notice {
+    }
+
+class ServiceJourney {
+
+}
+    class NoticeAssignment {
+    }
+    %% Containment relations (only contained elements)
+    ServiceFrame "1" o-- "0..*" Line : contains
+    ServiceFrame "1" o-- "0..*" DestinationDisplay : contains
+    ServiceFrame "1" o-- "0..*" ScheduledStopPoint : contains
+    ServiceFrame "1" o-- "0..*" PassengerStopAssignment : contains
+    ServiceFrame "1" o-- "0..*" PassengerBoardingPositionAssignment : contains
+    ServiceFrame "1" o-- "0..*" DefaultConnection : contains
+    ServiceFrame "1" o-- "0..*" SiteConnection : contains
+    ServiceFrame "1" o-- "0..*" Notice : contains
+    ServiceFrame "1" o-- "0..*" NoticeAssignment : contains
+    Line "1" -- "1" DestinationDisplay : references
+
+    %% external references
+    ServiceJourney "1" -- "1" Line : references
+    ServiceJourney "1" -- "0..1" DestinationDisplay : references
+    ServiceJourney "1" -- "0..*" NoticeAssignment : contains
+
+    PassengerStopAssignment "1" -- "1" StopPlace : references
+    PassengerStopAssignment "1" -- "0..1" Quay : references
+    PassengerStopAssignment "1" -- "1" ScheduledStopPoint : references
+</code></pre>
+
+<h3 id="contained-elements">Contained Elements</h3>
+<p>The <code class="language-plaintext highlighter-rouge">ServiceFrame</code> model comprises among others:</p>
+<ul>
+  <li>Route model: fixed and flexible  <code class="language-plaintext highlighter-rouge">Line</code>s and <code class="language-plaintext highlighter-rouge">Route</code>s of a transport network.</li>
+  <li>Line network model: overall topology of the <code class="language-plaintext highlighter-rouge">Line</code> and line sections that make up a transport network.</li>
+  <li>Service pattern model: <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s, <code class="language-plaintext highlighter-rouge">ServiceLink</code>, i.e., points and links referenced by schedules.</li>
+</ul>
+
+<p>Other important classes of the <code class="language-plaintext highlighter-rouge">ServiceFrame</code> include:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s and <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.</li>
+  <li><code class="language-plaintext highlighter-rouge">Connection</code>s as the topological model of interchanges. They model the possibility of a transfer between two <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Notice</code>s which are then assigned to <code class="language-plaintext highlighter-rouge">Journey</code> and <code class="language-plaintext highlighter-rouge">Passingtime</code> of the <code class="language-plaintext highlighter-rouge">TimetableFrame</code> through <code class="language-plaintext highlighter-rouge">NoticeAssignment</code>s. They model the association of footnotes and passenger information content such as stop announcements and the network.</li>
+</ul>
+
+<h3 id="table">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>lines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>lineRefs_RelStructure</td>
+      <td>Lines for FLEXIBLE STOP PLACE.</td>
+      <td>Only Line is used and not FlexibleLine</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/Line.html">Line</a></td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>destinationDisplays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>destinationDisplayRefs_RelStructure</td>
+      <td>Destinations associated with this GROUP OF SERVICEs, including via points.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/DestinationDisplay.html">DestinationDisplay</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>scheduledStopPoints</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>scheduledStopPointsInFrame_RelStructure</td>
+      <td>SCHEDULED STOP POINTs in frame.</td>
+      <td>Swiss ScheduledStopPoint are using the sloid in the id, when possible.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/SiteConnection.html">SiteConnection</a> possibility to connect from one point to another in a SITE.</td>
+      <td>SiteConnection are used only in the main file and not in timetable files.</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/DefaultConnection.html">DefaultConnection</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
+      <td>DefaultConnection is only used in the site file</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>stopAssignments</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>stopAssignmentsInFrame_RelStructure</td>
+      <td>STOP ASSIGNMENTs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
+      <td>are only used in a special PSA file in the export.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/timingLinks.md">timingLinks</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timingLinksInFrame_RelStructure</td>
+      <td>TIMING LINKs in frame.</td>
+      <td>We use TimingLink as the time behaviour between two ScheduledStopPoints</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>journeyPatterns</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>journeyPatternRefs_RelStructure</td>
+      <td>JourneyPatternsequivalent to the series.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a> SERVICE JOURNEY.</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/timeDemandTypes.md">timeDemandTypes</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timeDemandTypeRefs_RelStructure</td>
+      <td>Other TIME DEMAND TYPEs used in journey.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>notices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>noticesInFrame_RelStructure</td>
+      <td>NOTICEs in frame.</td>
+      <td>notices may be present or not</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRgTest/tables/Notice.html">Notice</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td>if notices are present, one Notice must be.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/ServiceFrame.html">General NeTEx definition </a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- A minimal ServiceFrame must be present in all timetable files. --&gt;</span>
+  <span class="nt">&lt;directions&gt;</span>
+    <span class="c">&lt;!-- We don't use directions, but only direction type --&gt;</span>
+  <span class="nt">&lt;/directions&gt;</span>
+  <span class="nt">&lt;lines&gt;</span>
+    <span class="c">&lt;!-- Only Line is used and not FlexibleLine --&gt;</span>
+    <span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Name is needed<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/Line&gt;</span>
+    <span class="nt">&lt;FlexibleLine</span> <span class="na">id=</span><span class="s">"notUsed"</span> <span class="na">version=</span><span class="s">"none"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We work with Line only. --&gt;</span>
+    <span class="nt">&lt;/FlexibleLine&gt;</span>
+  <span class="nt">&lt;/lines&gt;</span>
+  <span class="nt">&lt;destinationDisplays&gt;</span>
+    <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+    <span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+    <span class="nt">&lt;/DestinationDisplay&gt;</span>
+  <span class="nt">&lt;/destinationDisplays&gt;</span>
+  <span class="nt">&lt;scheduledStopPoints&gt;</span>
+    <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. --&gt;</span>
+    <span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"sloid_where_possible"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. --&gt;</span>
+    <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
+  <span class="nt">&lt;/scheduledStopPoints&gt;</span>
+  <span class="nt">&lt;connections&gt;</span>
+    <span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- SiteConnection are used only in the main file and not in timetable files. --&gt;</span>
+    <span class="nt">&lt;/SiteConnection&gt;</span>
+    <span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- DefaultConnection is only used in the site file --&gt;</span>
+    <span class="nt">&lt;/DefaultConnection&gt;</span>
+  <span class="nt">&lt;/connections&gt;</span>
+  <span class="nt">&lt;stopAssignments&gt;</span>
+    <span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- are only used in a special PSA file in the export. --&gt;</span>
+    <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
+  <span class="nt">&lt;/stopAssignments&gt;</span>
+  <span class="nt">&lt;timingLinks&gt;</span>
+    <span class="c">&lt;!-- We use TimingLink as the time behaviour between two ScheduledStopPoints --&gt;</span>
+    <span class="nt">&lt;TimingLink</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- every different handling of the link needs a different timing link e.g. bus vs tram --&gt;</span>
+      <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"sloid1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"sloid 2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/TimingLink&gt;</span>
+  <span class="nt">&lt;/timingLinks&gt;</span>
+  <span class="nt">&lt;journeyPatterns&gt;</span>
+    <span class="nt">&lt;ServiceJourneyPattern</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/journeyPatterns&gt;</span>
+  <span class="nt">&lt;timeDemandTypes&gt;</span>
+    <span class="nt">&lt;TimeDemandType</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/timeDemandTypes&gt;</span>
+<span class="nt">&lt;/ServiceFrame&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRgTest/templates/ServiceFrame.xml">Template</a></em></p>
+
+<h3 id="frame-relationships">Frame Relationships</h3>
+<p><code class="language-plaintext highlighter-rouge">ServiceFrame</code> depends on <code class="language-plaintext highlighter-rouge">ResourceFrame</code> for <code class="language-plaintext highlighter-rouge">Operator</code> definitions. <code class="language-plaintext highlighter-rouge">VehicleScheduleFrame</code> may reference journeys defined here for block and duty scheduling. <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s build the connection between <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code> and the physical model in <code class="language-plaintext highlighter-rouge">SiteFrame</code>. ServiceFrame<code class="language-plaintext highlighter-rouge"> is typically wrapped in a </code>CompositeFrame<code class="language-plaintext highlighter-rouge">within a </code>PublicationDelivery`.</p>
+
+<h2 id="direction">Direction</h2>
+<p>We don’t use <code class="language-plaintext highlighter-rouge">Direction</code> but only <code class="language-plaintext highlighter-rouge">DirectionType</code>. For this we need NeTEx 2.1.</p>
+
+<p>This means that the old two defined dirctions <code class="language-plaintext highlighter-rouge">ch:1:Direction:H</code> and <code class="language-plaintext highlighter-rouge">ch:1:Direction:R</code> will no longer be supported.</p>
+
+<h2 id="line">Line</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#line">Glossary definition</a></em></p>
+<h3 id="purpose-1">Purpose</h3>
+<p>A public transport service line, representing a marketed route with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>.</p>
+
+<h3 id="table-1">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Line</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td>We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValidBetween</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td>Usually set to the whole timetable year</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>FromDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>keyList</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>KeyValue</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>The SLNID is mandatory, when it exists</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>Key</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>Value</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td>contains the LinieKurzName (attribut N T in HRDF)</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TransportMode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AllModesEnumeration</td>
+      <td>MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>RailSubmode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>RailSubmodeEnumeration</td>
+      <td>TPEG pti02 Rail submodes loc13.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/Line.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Line</span>  <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. --&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="c">&lt;!-- Usually set to the whole timetable year --&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2022-12-11T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2023-12-09T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- The SLNID is mandatory, when it exists --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SLNID<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:slnid:102846<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>3<span class="nt">&lt;/Name&gt;</span>
+  <span class="c">&lt;!-- contains attribute D T from HRDF. Is not translated on purpose. --&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>3<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="c">&lt;!-- contains the LinieKurzName (attribut N T in HRDF) --&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TransportSubmode&gt;</span>
+    <span class="nt">&lt;RailSubmode&gt;</span>suburbanRailway<span class="nt">&lt;/RailSubmode&gt;</span>
+  <span class="nt">&lt;/TransportSubmode&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>3<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="c">&lt;!-- Contains LinieLangName (attribute LT from HRDF) --&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The operator is the transport organisation that really will do the operation. If different from AuthorityRef --&gt;</span>
+  <span class="nt">&lt;/OperatorRef&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Always aligned with BS KI oev-info.ch --&gt;</span>
+  <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
+<span class="nt">&lt;/Line&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/Line.xml">Template</a></em></p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+<ul>
+  <li>slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the <code class="language-plaintext highlighter-rouge">id</code>-attribute.</li>
+  <li>For foreign lines and id might need to be generated.</li>
+  <li>We store the slnid whenever possible in <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> and <code class="language-plaintext highlighter-rouge">KeyList</code>.</li>
+  <li><strong>TODO</strong> link to migration concept slnid #48</li>
+  <li><strong>TODO</strong> handling of mixed lines #48</li>
+  <li>Be aware that for mixed lines there might be multiple <code class="language-plaintext highlighter-rouge">Line</code>s in NeTEx. Otherwise, the relevant <code class="language-plaintext highlighter-rouge">Operator</code> must be set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
+  <li>Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a <code class="language-plaintext highlighter-rouge">Line</code>. In NeTEx, however, the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s corresponding to such journeys must still reference something in <code class="language-plaintext highlighter-rouge">LineRef</code>. To ensure this, we introduce a placeholder <code class="language-plaintext highlighter-rouge">Line</code> called “NoLine” for each <code class="language-plaintext highlighter-rouge">Operator</code> that has journeys without a Line.</li>
+  <li>For more information about SwissLineID: see https://www.xn–v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="destinationdisplay">DestinationDisplay</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#destinationdisplay">Glossary definition</a></em></p>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>Showing the destination of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.</p>
+
+<h3 id="table-2">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>DestinationDisplay</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td>Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>DriverDisplayText</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text to show to Driver or Staff for the DESTINATION DISPLAY.</td>
+      <td>Text to display to DRIVER.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/DestinationDisplay.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;DestinationDisplay</span>  <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Porrentruy<span class="nt">&lt;/Name&gt;</span>
+  <span class="c">&lt;!-- Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. --&gt;</span>
+  <span class="nt">&lt;DriverDisplayText&gt;</span>Porrentruy<span class="nt">&lt;/DriverDisplayText&gt;</span>
+  <span class="c">&lt;!-- Text to display to DRIVER. --&gt;</span>
+  <span class="nt">&lt;Presentation/&gt;</span>
+<span class="nt">&lt;/DestinationDisplay&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/DestinationDisplay.xml">Template</a></em></p>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+<ul>
+  <li>In HRDF sometimes the destination is not set (<code class="language-plaintext highlighter-rouge">*R</code>). This results in NeTEX in a calculated destination definition.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is usually set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. If it changes during the run, it needs to be changed in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. If it changes on that, then the new destination should be used. In our output, we will fill all remaining <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code>with the relevant change.</li>
+  <li>See also the <a href="/netexRgTest/uc13_changes_in_destination.html">use case on changes in destination</a></li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<blockquote>
+  <p><strong>TODO</strong> the rules for defining need to be clarified. #81</p>
+</blockquote>
+
+<h2 id="scheduledstoppoint">ScheduledStopPoint</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#scheduledstoppoint">Glossary definition</a></em></p>
+
+<h3 id="purpose-3">Purpose</h3>
+<p>A logical point used in the timetable to indicate a stop of a service where passengers can board or alight. A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is linked to a physical <code class="language-plaintext highlighter-rouge">Quay</code> or <code class="language-plaintext highlighter-rouge">StopPlace</code> via a <a href="#passengerstopassignment">PassengerStopAssignment</a>.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> can represent two types of stop points:</p>
+<ul>
+  <li>In most cases, the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is the station named in the timetable, especially as some organisations don’t have a full physical model of their StopPlaces.</li>
+  <li>In some cases, the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> may be mapped to the <code class="language-plaintext highlighter-rouge">Quay</code>. The more detailed mapping is also done with the <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>.</li>
+</ul>
+
+<h3 id="table-3">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>ScheduledStopPoint</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td>Swiss ScheduledStopPoint are using the sloid in the id, when possible.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>keyList</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>We expect a DIDOK key and a SLOID, whereever possible.</td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>privateCodes</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PrivateCode</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td>The names are the same in all languages.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ShortName</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td>StopPlace : Name of the Place, Quay : ShortName of the Quay</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/ScheduledStopPoint.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;scheduledStopPoints</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4128:1:1"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. --&gt;</span>
+    <span class="nt">&lt;keyList&gt;</span>
+      <span class="nt">&lt;KeyValue&gt;</span>
+        <span class="c">&lt;!-- We expect a DIDOK key and a SLOID, whereever possible. --&gt;</span>
+        <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>8504128<span class="nt">&lt;/Value&gt;</span>
+      <span class="nt">&lt;/KeyValue&gt;</span>
+      <span class="nt">&lt;KeyValue&gt;</span>
+        <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/Value&gt;</span>
+      <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;/keyList&gt;</span>
+    <span class="nt">&lt;privateCodes&gt;</span>
+      <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;/privateCodes&gt;</span>
+    <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Murten/Morat<span class="nt">&lt;/Name&gt;</span>
+    <span class="c">&lt;!-- The names are the same in all languages. --&gt;</span>
+    <span class="nt">&lt;ShortName</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/ShortName&gt;</span>
+    <span class="c">&lt;!-- StopPlace : Name of the Place, Quay : ShortName of the Quay --&gt;</span>
+  <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
+<span class="nt">&lt;/scheduledStopPoints&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/ScheduledStopPoint.xml">Template</a></em></p>
+
+<h3 id="usage-notes-2">Usage Notes</h3>
+<ul>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="passengerstopassignment">PassengerStopAssignment</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#passengerstopassignment">Glossary definition</a></em></p>
+
+<h3 id="purpose-4">Purpose</h3>
+
+<p><code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s bring the Site model and the Service model in alignment. We have two general cases:</p>
+<ul>
+  <li>A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> is linked to a <code class="language-plaintext highlighter-rouge">StopPlace</code> for arrival and departure.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> is linked to a <code class="language-plaintext highlighter-rouge">Quay</code> for arrival and departure.</li>
+</ul>
+
+<h3 id="table-4">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>PassengerStopAssignment</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPlaceRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>StopPlaceRefStructure</td>
+      <td>System identifier of a STOP PLACE. May be omitted if given by context.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>QuayRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>QuayRefStructure</td>
+      <td>QUAY to which SCHEDULED STOP POINT is to be assigned.</td>
+      <td>Not having the track may be problematic, but it can happen</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/PassengerStopAssignment.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PassengerStopAssignment</span>  <span class="na">id=</span><span class="s">"generated-85003000-12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;QuayRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Not having the track may be problematic, but it can happen --&gt;</span>
+  <span class="nt">&lt;/QuayRef&gt;</span>
+<span class="nt">&lt;/PassengerStopAssignment&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/PassengerStopAssignment.xml">Template</a></em></p>
+
+<h3 id="usage-notes-3">Usage Notes</h3>
+<blockquote>
+  <p><strong>TODO</strong> Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
+https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82</p>
+</blockquote>
+
+<ul>
+  <li>id-attributes don’t need to be stable.</li>
+</ul>
+
+<h2 id="defaultconnection">DefaultConnection</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#defaultconnection">Glossary definition</a></em></p>
+
+<h3 id="purpose-5">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">DefaultConnections</code> are used to transmit the connection times for the following constellations:</p>
+<ul>
+  <li>between 2 <code class="language-plaintext highlighter-rouge">ProductCategory</code>s</li>
+  <li>between 2 <code class="language-plaintext highlighter-rouge">Operator</code>s</li>
+  <li>In a defined <code class="language-plaintext highlighter-rouge">StopPlace</code></li>
+  <li>In a defined <code class="language-plaintext highlighter-rouge">StopPlace</code> and 2 <code class="language-plaintext highlighter-rouge">Operator</code>s</li>
+  <li>in a defined <code class="language-plaintext highlighter-rouge">StopPlace</code>, 2 <code class="language-plaintext highlighter-rouge">Operator</code>s and 2 <code class="language-plaintext highlighter-rouge">ProductCategory</code>s</li>
+</ul>
+
+<h3 id="table-5">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>DefaultConnection</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
+      <td>Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Extensions</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>ExtensionsStructure</td>
+      <td>User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td>When also ProductCategory is relevant, then this extension must be used</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>FromProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Extension needed to map “Verkehrsmittel-Gattung”, which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Extension needed to map “Verkehrsmittel-Gattung”, which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>WalkTransferDuration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TransferDurationStructure</td>
+      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
+      <td>We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics)</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>MobilityRestrictedTravellerDuration</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Time for a Mobility Restricted traveller to make a TRANSFER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BothWays</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
+      <td>We always intend to use only one way, because the behaviour may not be the same.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ConnectionEndStructure</td>
+      <td>Origin end of CONNECTION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllModesEnumeration</td>
+      <td>MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>OperatorView</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>OperatorRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>OperatorRefStructure</td>
+      <td>Reference to an OPERATOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ConnectionEndStructure</td>
+      <td>Destination end of CONNECTION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPlaceRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>StopPlaceRefStructure</td>
+      <td>System identifier of a STOP PLACE. May be omitted if given by context.</td>
+      <td>Is a sloid usually. Not set, means whole network.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/DefaultConnection.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-5">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. --&gt;</span>
+  <span class="nt">&lt;Extensions&gt;</span>
+    <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
+    <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+    <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
+    <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+    <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
+  <span class="nt">&lt;/Extensions&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="c">&lt;!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) --&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+    <span class="nt">&lt;MobilityRestrictedTravellerDuration&gt;</span>PT4M<span class="nt">&lt;/MobilityRestrictedTravellerDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="c">&lt;!-- We always intend to use only one way, because the behaviour may not be the same. --&gt;</span>
+  <span class="nt">&lt;From&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;OperatorView&gt;</span>
+      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;/From&gt;</span>
+  <span class="nt">&lt;To&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;OperatorView&gt;</span>
+      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;/To&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Is a sloid usually. Not set, means whole network. --&gt;</span>
+  <span class="nt">&lt;/StopPlaceRef&gt;</span>
+<span class="nt">&lt;/DefaultConnection&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/DefaultConnection.xml">Template</a></em></p>
+
+<h3 id="usage-notes-4">Usage Notes</h3>
+<ul>
+  <li>For more details see the <a href="/netexRgTest/uc03_transfers.html">use case on transfers</a>.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="siteconnection">SiteConnection</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#siteconnection">Glossary definition</a></em></p>
+
+<h3 id="purpose-6">Purpose</h3>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">SiteConnection</code> describes the transfer times between two adjacent <code class="language-plaintext highlighter-rouge">StopPlace</code>s.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h3 id="table-6">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>SiteConnection</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
+      <td>SiteConnection are used only in the main file and not in timetable files.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>WalkTransferDuration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TransferDurationStructure</td>
+      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>DefaultDuration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Default time needed for a traveller to make a TRANSFER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BothWays</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ConnectionEndStructure</td>
+      <td>Origin end of CONNECTION.</td>
+      <td>Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StopPlaceRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>StopPlaceRefStructure</td>
+      <td>System identifier of a STOP PLACE. May be omitted if given by context.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ConnectionEndStructure</td>
+      <td>Destination end of CONNECTION.</td>
+      <td>Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/SiteConnection.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-6">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteConnection</span>  <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- SiteConnection are used only in the main file and not in timetable files. --&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="nt">&lt;From&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/From&gt;</span>
+  <span class="nt">&lt;To&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/To&gt;</span>
+<span class="nt">&lt;/SiteConnection&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/SiteConnection.xml">Template</a></em></p>
+
+<h3 id="usage-notes-5">Usage Notes</h3>
+<p>For more details see the <a href="/netexRgTest/uc03_transfers.html">use case on transfers</a>.</p>
+
+<h2 id="timinglink">TimingLink</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#timinglink">Glossary definition</a></em></p>
+
+<h3 id="purpose-7">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">TimingLink</code>  is used to describe the run times and wait times of a given <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</p>
+
+<h3 id="table-7">Table</h3>
+<ul>
+  <li><a href="../generated/markdown-examples/TimingLink.md">Swiss profile NeTEx definition</a></li>
+</ul>
+
+<p><em>-&gt; <a href="../generated/netex-html/TimingLink.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-7">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TimingLink</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary --&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"sloid1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"sloid 2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;OperationalContextRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point --&gt;</span>
+  <span class="nt">&lt;/OperationalContextRef&gt;</span>
+<span class="nt">&lt;/TimingLink&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/TimingLink.xml">Template</a></em></p>
+
+<h3 id="usage-notes-6">Usage Notes</h3>
+<ul>
+  <li>It must fit with the sequence defined in <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">WaitTime</code>is only needed when &gt;0..</li>
+  <li>It is between <code class="language-plaintext highlighter-rouge">ScheduledStopPoints for the time being</code>.</li>
+  <li>If there is maneuvering or change of quay, then a a timing link needs to be added for that too.</li>
+  <li>Multiple visits in the same <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> are currently a problem.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<blockquote>
+  <p><strong>TODO</strong> Adrian/Wilfried</p>
+</blockquote>
+
+<h2 id="servicejourneypattern">ServiceJourneyPattern</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#servicejourneypattern">Glossary definition</a></em></p>
+
+<h3 id="purpose-8">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> is used to describe the journey pattern (sequence and times of <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code>) of <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</p>
+
+<h3 id="table-8">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>ServiceJourneyPattern</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>RouteView</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Annotated reference to a ROUTE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LineRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LineRefStructure</td>
+      <td>Reference to a LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>DirectionType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>RelativeDirectionEnumeration</td>
+      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>pointsInSequence</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>vehicleMeetingPointsInSequence_RelStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StopPointInJourneyPattern</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ForAlighting</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether alighting is allowed at the stop Default is true.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ForBoarding</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether boarding is allowed at the stop. Default is true.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>DestinationDisplayRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>DestinationDisplayRefStructure</td>
+      <td>Reference to a DESTINATION DISPLAY.</td>
+      <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>RequestStop</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether stop is a request stop for this journey. Default is false.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>StopUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>StopUseEnumeration</td>
+      <td>Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</td>
+      <td>All values possible</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for Cancellations. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>BookingArrangementRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>BookingArrangementRefStructure</td>
+      <td>Reference to a BOOKING ARRANGEMENT.</td>
+      <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>BookingArrangement</td>
+      <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ServiceJourneyPatternType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ServiceJourneyPatternTypeEnumeration</td>
+      <td>Type of SERVICE JOURNEY PATTERN.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/ServiceJourneyPattern.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-8">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourneyPattern</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyPattern:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern-Spiez<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;RouteView&gt;</span>
+    <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1024437"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/RouteView&gt;</span>
+  <span class="nt">&lt;DirectionType&gt;</span>outbound<span class="nt">&lt;/DirectionType&gt;</span>
+  <span class="nt">&lt;pointsInSequence&gt;</span>
+    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ForAlighting&gt;</span>false<span class="nt">&lt;/ForAlighting&gt;</span>
+      <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
+      <span class="nt">&lt;DestinationDisplayRef</span> <span class="na">ref=</span><span class="s">"DestinationDisplay:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney --&gt;</span>
+      <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
+      <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
+      <span class="nt">&lt;StopUse&gt;</span>access<span class="nt">&lt;/StopUse&gt;</span>
+      <span class="c">&lt;!-- All values possible --&gt;</span>
+      <span class="nt">&lt;bookingArrangements&gt;</span>
+        <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="c">&lt;!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. --&gt;</span>
+        <span class="nt">&lt;/BookingArrangementRef&gt;</span>
+      <span class="nt">&lt;/bookingArrangements&gt;</span>
+    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7100:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
+      <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
+    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7483:0:954324"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
+      <span class="nt">&lt;ForBoarding&gt;</span>false<span class="nt">&lt;/ForBoarding&gt;</span>
+    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+  <span class="nt">&lt;/pointsInSequence&gt;</span>
+  <span class="nt">&lt;ServiceJourneyPatternType&gt;</span>passenger<span class="nt">&lt;/ServiceJourneyPatternType&gt;</span>
+<span class="nt">&lt;/ServiceJourneyPattern&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/ServiceJourneyPattern.xml">Template</a></em></p>
+
+<h3 id="usage-notes-7">Usage Notes</h3>
+
+<p>ServiceJourneyPatterns are a common concept in the VDV interface world (“Linienfahrweg”). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.</p>
+<ul>
+  <li>id-attribute should be kept stable between exports.</li>
+</ul>
+
+<h2 id="timedemandtype">TimeDemandType</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#timedemandtype">Glossary definition</a></em></p>
+
+<h3 id="purpose-9">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">TimeDemandType</code> is used to describe the timing pattern (run times and wait times) on a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. They currently work on <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code>.</p>
+
+<h3 id="table-9">Table</h3>
+<ul>
+  <li><a href="../generated/markdown-examples/TimeDemandType.md">Swiss profile NeTEx definition</a></li>
+</ul>
+
+<p><em>-&gt; <a href="../generated/netex-html/TimeDemandType.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-9">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TimeDemandType</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- TimeDemandType assigns a timing behaviour to a ServiceJourney --&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>high demand<span class="nt">&lt;/Description&gt;</span>
+  <span class="c">&lt;!-- Can be used, if a decription exists what this pattern doe --&gt;</span>
+  <span class="nt">&lt;runTimes&gt;</span>
+    <span class="c">&lt;!-- The run time on the TimingLinks --&gt;</span>
+    <span class="nt">&lt;JourneyRunTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;TimingLinkRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- The timing link that is ued here and that that does have a given run time --&gt;</span>
+      <span class="nt">&lt;/TimingLinkRef&gt;</span>
+      <span class="nt">&lt;RunTime&gt;</span>PT5M<span class="nt">&lt;/RunTime&gt;</span>
+    <span class="nt">&lt;/JourneyRunTime&gt;</span>
+  <span class="nt">&lt;/runTimes&gt;</span>
+  <span class="nt">&lt;waitTimes&gt;</span>
+    <span class="c">&lt;!-- we only need the wait times, when they are &gt;0 --&gt;</span>
+    <span class="nt">&lt;JourneyWaitTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Relevant waiting times at the stop --&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"sloid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Which Quay is referenced --&gt;</span>
+      <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
+      <span class="nt">&lt;WaitTime&gt;</span>PT2M<span class="nt">&lt;/WaitTime&gt;</span>
+    <span class="nt">&lt;/JourneyWaitTime&gt;</span>
+  <span class="nt">&lt;/waitTimes&gt;</span>
+<span class="nt">&lt;/TimeDemandType&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/TimeDemandType.xml">Template</a></em></p>
+
+<h3 id="usage-notes-8">Usage Notes</h3>
+<blockquote>
+  <p><strong>TODO</strong> Wilfried und Adrian</p>
+</blockquote>
+
+<h2 id="notice">Notice</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#notice">Glossary definition</a></em></p>
+
+<h3 id="purpose-10">Purpose</h3>
+<p>Informational or regulatory text associated with public transport services, displayed to passengers.</p>
+
+<h3 id="table-10">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Notice</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>alternativeTexts</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>alternativeTexts_RelStructure</td>
+      <td>Additional Translations of text elements.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="./tables/AlternativeText.md">AlternativeText</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>Alternative Text. +v1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PublicCode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>PublicCodeStructure</td>
+      <td>Public code for JOURNEY.</td>
+      <td>The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ShortCode</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>CleardownCodeType</td>
+      <td>A 20 bit number used for wireless cleardown of stop displays by some AVL systems.</td>
+      <td>A duplication, but we want it.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>A duplication, but we want it.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TypeOfNoticeRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>TypeOfNoticeRefStructure</td>
+      <td>Reference to a TYPE OF NOTICE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CanBeAdvertised</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether NOTICE is advertised to public. This may be overridden on an assignment.</td>
+      <td>Whether the NOTICE is advertised.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/Notice.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-10">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Notice</span>  <span class="na">id=</span><span class="s">"ch:1:Notice:generated-1229900"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;alternativeTexts&gt;</span>
+    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Text"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Text&gt;</span>Catering zone / Vending machine<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/AlternativeText&gt;</span>
+    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Text"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Text&gt;</span>Zone catering / Distributeur<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/AlternativeText&gt;</span>
+    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Text"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Text&gt;</span>Zona catering / Distributore<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/AlternativeText&gt;</span>
+  <span class="nt">&lt;/alternativeTexts&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Cateringzone / Automaten<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>
+    <span class="c">&lt;!-- The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. --&gt;</span>
+  <span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;ShortCode&gt;</span>A__SN<span class="nt">&lt;/ShortCode&gt;</span>
+  <span class="c">&lt;!-- A duplication, but we want it. --&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>A__SN<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="c">&lt;!-- A duplication, but we want it. --&gt;</span>
+  <span class="nt">&lt;TypeOfNoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;CanBeAdvertised&gt;</span>true<span class="nt">&lt;/CanBeAdvertised&gt;</span>
+  <span class="c">&lt;!-- Whether the NOTICE is advertised. --&gt;</span>
+<span class="nt">&lt;/Notice&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/Notice.xml">Template</a></em></p>
+
+<h3 id="usage-notes-9">Usage Notes</h3>
+<p>Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).</p>
+<ul>
+  <li>id-attribute don’t need to be kept stable between exports.</li>
+</ul>
+
+<h2 id="noticeassignment">NoticeAssignment</h2>
+<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#noticeassignment">Glossary definition</a></em></p>
+
+<h3 id="purpose-11">Purpose</h3>
+<p>Assign a <code class="language-plaintext highlighter-rouge">Notice</code> to an element.</p>
+
+<h3 id="table-11">Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>validityConditions</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AvailabilityConditionRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NoticeRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>NoticeRefStructure</td>
+      <td>Reference to a NOTICE i.e. footnote, note, announcement or other informational text element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StartPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicability of NOTICE starts.</td>
+      <td>If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>EndPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicabiity of NOTICE endsIf absent same as Start Point.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/NoticeAssignment.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-11">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NoticeAssignment</span>  <span class="na">id=</span><span class="s">"ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Attribute `id` must be unique. --&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;NoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:Notice:Hin-1229900"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;StartPointInPatternRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. --&gt;</span>
+  <span class="nt">&lt;/StartPointInPatternRef&gt;</span>
+  <span class="nt">&lt;EndPointInPatternRef</span> <span class="na">ref=</span><span class="s">"generated-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/NoticeAssignment&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRgTest/templates/NoticeAssignment.xml">Template</a></em></p>
+
+<h3 id="usage-notes-10">Usage Notes</h3>
+<ul>
+  <li>id-attribute does not to be kept stable.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRgTest/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
+
+</html>

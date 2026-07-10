@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd"><!-- ch-root -->
+	<!-- ch-usage: mandatory -->
+	<PublicationTimestamp><!-- ch-usage: mandatory -->2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef><!-- ch-usage: mandatory --><!-- ch-note: Use here a distinctive name -->SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults>
+				<!-- ch-see -->
+			</FrameDefaults>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
+					<!-- ch-note: Only if we really need it -->
+					<!-- ch-see -->
+				</ResourceFrame>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<!-- ch-usage: mandatory -->
+					<!-- ch-see -->
+				</SiteFrame>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<!-- ch-see ServiceFrame_SITE_OFFER.xml -->
+					<!-- ch-usage: expected -->
+					<!-- ch-notice: Used for DefaultConnections and SiteConnections -->
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
