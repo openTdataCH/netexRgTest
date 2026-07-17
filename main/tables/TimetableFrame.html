@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/TimetableFrame.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/TimetableFrame.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/TimetableFrame.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/TimetableFrame.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="TimetableFrame" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"TimetableFrame","url":"https://opentdatach.github.io/netexRgTest/tables/TimetableFrame.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"TimetableFrame","url":"https://opentdatach.github.io/netexRgTest/main/tables/TimetableFrame.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,9 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p><em>Table: TimetableFrame</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -55,7 +57,25 @@
   </thead>
   <tbody>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>vehicleJourneys</td>
       <td>expected</td>
       <td>0..1</td>
@@ -64,42 +84,25 @@
       <td>Contains the ServiceJourneys and TemplateServiceJourneys.</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceJourney.html">ServiceJourney</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceJourney.html">ServiceJourney</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.</td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <td>The VIEW includes derived ancillary data from referenced entities.</td>
+      <td>1..*</td>
+      <td>ServiceJourney</td>
+      <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
       <td>ServiceJourney is used for common Journeys.</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
     </tr>
     <tr>
-      <td> </td>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>TemplateServiceJourney</td>
       <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>+</td>
       <td>trainNumbers</td>
       <td>expected</td>
       <td>0..1</td>
@@ -108,18 +111,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td> </td>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/TrainNumber.html">TrainNumber</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TrainNumber.html">TrainNumber</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>TrainNumber</td>
       <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
-      <td>+</td>
       <td>serviceFacilitySets</td>
       <td>optional</td>
       <td>0..1</td>
@@ -128,18 +129,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td> </td>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceFacilitySet</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
-      <td>+</td>
       <td>typesOfService</td>
       <td>expected</td>
       <td>0..1</td>
@@ -148,54 +147,22 @@
       <td> </td>
     </tr>
     <tr>
-      <td> </td>
-      <td>++</td>
+      <td>+</td>
       <td>TypeOfService</td>
       <td>optional</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>TypeOfService</td>
       <td>Classification of a Service.</td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
     </tr>
     <tr>
-      <td> </td>
       <td>+</td>
-      <td>journeyInterchanges</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>journeyInterchangesInFrame_RelStructure</td>
-      <td>INTERCHANGES in frame.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
+      <td><a href="/netexRgTest/main/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>ServiceJourneyInterchange</td>
       <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
       <td>For modeling many forms of interchanges</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>+</td>
-      <td>interchangeRules</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>interchangeRules_RelStructure</td>
-      <td>INTERCHANGE RULEs for visit.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>++</td>
-      <td><a href="InterchangeRule.md">InterchangeRule</a></td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td>Conditions for considering journeys to meet or not to meet, specified indirectly: by a particular MODE, DIRECTION or LINE. Such conditions may alternatively be specified directly, indicating the corresponding services. In this case they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.</td>
-      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -206,7 +173,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

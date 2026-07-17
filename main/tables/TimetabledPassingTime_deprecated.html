@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/TimetabledPassingTime_deprecated.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/TimetabledPassingTime_deprecated.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/TimetabledPassingTime_deprecated.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/TimetabledPassingTime_deprecated.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="TimetabledPassingTime_deprecated" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"TimetabledPassingTime_deprecated","url":"https://opentdatach.github.io/netexRgTest/tables/TimetabledPassingTime_deprecated.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"TimetabledPassingTime_deprecated","url":"https://opentdatach.github.io/netexRgTest/main/tables/TimetabledPassingTime_deprecated.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE.</p>
+
+<p><em>Table: TimetabledPassingTime</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -55,25 +59,34 @@
   </thead>
   <tbody>
     <tr>
-      <td>++</td>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>CheckConstraint</td>
       <td>optional</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>CheckConstraint</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td><strong>TODO - Planned for V2.1</strong> Allows for specifying delays due to longer boarding times.</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>IsFlexible</td>
       <td>optional</td>
       <td>0..1</td>
@@ -82,7 +95,7 @@
       <td><strong>TODO - Planned for V2.1</strong> Stop is only served upon prior request (e.g., booking by phone).</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>AlightAndReboard</td>
       <td>optional</td>
       <td>0..1</td>
@@ -91,7 +104,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>StopPointInJourneyPatternRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -100,7 +113,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ArrivalTime</td>
       <td>expected</td>
       <td>0..1</td>
@@ -109,7 +122,7 @@
       <td>Not used if departure only.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ArrivalDayOffset</td>
       <td>optional</td>
       <td>0..1</td>
@@ -118,7 +131,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>DepartureTime</td>
       <td>expected</td>
       <td>0..1</td>
@@ -127,7 +140,7 @@
       <td>Not used if arrival only.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>DepartureDayOffset</td>
       <td>optional</td>
       <td>0..1</td>
@@ -136,7 +149,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>WaitingTime</td>
       <td>optional</td>
       <td>0..1</td>
@@ -145,7 +158,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>LatestArrivalTime</td>
       <td>optional</td>
       <td>0..1</td>
@@ -154,7 +167,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>LatestArrivalDayOffset</td>
       <td>optional</td>
       <td>0..1</td>
@@ -163,7 +176,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>EarliestDepartureTime</td>
       <td>optional</td>
       <td>0..1</td>
@@ -172,7 +185,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>EarliestDepartureDayOffset</td>
       <td>optional</td>
       <td>0..1</td>
@@ -189,7 +202,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

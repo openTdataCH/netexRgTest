@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/01_intro_roadmap.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/01_intro_roadmap.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/01_intro_roadmap.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/01_intro_roadmap.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Introduction" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Introduction","url":"https://opentdatach.github.io/netexRgTest/01_intro_roadmap.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Introduction","url":"https://opentdatach.github.io/netexRgTest/main/01_intro_roadmap.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -42,13 +42,12 @@
 
   <div class="post-content">
     <p>The task performed by the NeTEx interface in Switzerland is the transmission of timetable data to one or more partners. The data transmitted via this interface is also required for the provision of timetable data in information systems. 
-This document sets out the Swiss-wide standard for the implementation of the NeTEx inter-face and of individual data structures with regard to the mutual exchange of timetable information for modes of transport ( e.g. train, bus ) between public transport companies. This information is then made available on the OpenData platform.</p>
+This document sets out the Swiss-wide standard for the implementation of the NeTEx interface and of individual data structures with regard to the mutual exchange of timetable information for modes of transport ( e.g. train, bus ) between public transport companies. This information is then made available on the OpenData platform.</p>
 
 <p>The document specifically describes:</p>
 <ul>
   <li>which data may be exchanged between public transport partners</li>
   <li>which NeTEx elements are supported within public transport in Switzerland</li>
-  <li>explicit deviations from the corresponding NeTEx</li>
   <li>the format of individual data elements</li>
   <li>the data flows in terms of content and time</li>
   <li>what agreements are necessary with respect to metadata</li>
@@ -57,16 +56,17 @@ This document sets out the Swiss-wide standard for the implementation of the NeT
 </ul>
 
 <h1 id="how-to-use-the-document">How to use the document</h1>
-<p>This document shows all elements of the norm that are deemed necessary for data exchange for public transport timetables in Switzerland. Each description is based on the text in the standard. However, we tried to enrich the information to simplify implementation. We use fol-lowing sections:</p>
+<p>This document shows all elements of the norm that are deemed necessary for data exchange for public transport timetables in Switzerland. Each description is based on the text in the standard. However, we tried to enrich the information to simplify implementation. We use the following sections:</p>
 <ul>
-  <li>Business Requirements: Telling the business story of the element and how it is used in public transportation in Switzerland</li>
-  <li>Structure: Contains the detailed physical structure of the element with examples and more information about the business level</li>
-  <li>Example: A detailed XML example</li>
+  <li>A link to the definition in official NeTEx and Transmodel terminology.</li>
+  <li><strong>Purpose</strong>: Introducing the element, its purpose and how it relates to other elements</li>
+  <li><strong>Table</strong>: Basicaly the XSD definition of the element in tabular form, tailored to the Swiss profile and enriched by profile-specific notes.</li>
+  <li><strong>Example</strong>: A detailed XML example.</li>
 </ul>
 
-<p>The tables in the structure section are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. An additional row is introduced for the specification of such business requirements. Elements that are not used/important, are not shown.</p>
+<p>The <strong>Table</strong> sections are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. A column <strong>Usage</strong> tells whether a contained element is mandatory, almost always expected, or optional, while a column <strong>Notes</strong> provides profile-specific additions. Elements that are not used/important, are not shown.</p>
 
-<p>The business requirement row also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are al-lowed.</p>
+<p>The <strong>Notes</strong> column also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are allowed.</p>
 
 <p>In some cases there are references to the HRDF format currently used in the data exchange of timetables in Switzerland. This is also to help implementers to understand how to work with it.</p>
 
@@ -109,7 +109,7 @@ This document sets out the Swiss-wide standard for the implementation of the NeT
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

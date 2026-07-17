@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StopPlace  id="ch:1:sloid:7000" version="1">
-  <!-- In some cases the id is not a sloid. -->
+  <!-- In some cases the id of a StopPlace is not a SLOID. -->
   <ValidBetween>
     <!-- This can be used to show, when the StopPlace can be used. -->
     <FromDate>2026-01-01T00:00:00</FromDate>
@@ -19,21 +19,15 @@
   </keyList>
   <privateCodes>
     <PrivateCode type="didok">7000</PrivateCode>
-    <!-- In Switzerland to be filled with the didok number and the sloid -->
+    <!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. -->
     <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+    <PrivateCode type="HafasPriority">4</PrivateCode>
+    <!-- Special value for Hafas environments. -->
+    <PrivateCode type="HafasKMInfo">1000</PrivateCode>
+    <!-- Special value for Hafas environments. -->
   </privateCodes>
-  <Extensions>
-    <HafasPriority>
-      <!-- Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
-      <Value>4</Value>
-    </HafasPriority>
-    <HafasKMInfo>
-      <!-- Special value for Hafas environments. -->
-      <Value>1000</Value>
-      <!-- Special value for Hafas environments. -->
-    </HafasKMInfo>
-  </Extensions>
   <Name>Bern</Name>
+  <!-- The official stop name. If you have different versions one needs to use AlternativeName -->
   <Centroid>
     <!-- Global or national location -->
     <Name/>
@@ -45,7 +39,7 @@
     </Location>
   </Centroid>
   <alternativeNames>
-    <!-- Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+    <!-- Alternative names for the StopPlace. We will also use these for synonyms. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
       <Name lang="it">Berna</Name>
     </AlternativeName>
@@ -54,6 +48,8 @@
     <!-- Id to the county, community, canton or country. -->
   </TopographicPlaceRef>
   <StopPlaceType>railStation</StopPlaceType>
+  <LimitedUse>interchangeOnly</LimitedUse>
+  <!-- For stops like Sagliains -->
   <Weighting>preferredInterchange</Weighting>
   <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   <quays>

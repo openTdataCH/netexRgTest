@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceFrame  id="ch:1:ServiceFrame" version="any">
+<ServiceFrame  id="ch:1:ServiceFrame" version="1">
   <!-- There is a partial ServiceFrame in the SITE_OFFER -->
   <directions>
     <!-- We don't use directions, but only direction type -->

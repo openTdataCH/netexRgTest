@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/02_basic_concepts.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/02_basic_concepts.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/02_basic_concepts.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/02_basic_concepts.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Basic concepts in NeTEx" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Basic concepts in NeTEx","url":"https://opentdatach.github.io/netexRgTest/02_basic_concepts.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Basic concepts in NeTEx","url":"https://opentdatach.github.io/netexRgTest/main/02_basic_concepts.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -45,99 +45,103 @@
 
 <p>The following diagram shows the relevant core classes we will use. In the center is the ServiceJourney.</p>
 
-<pre><code class="language-mermaid">graph TD
-  subgraph TimetableFrame["TimetableFrame"]
-    SJ[ServiceJourney]
-    DT[DirectionType]
-  end
+<pre><code class="language-mermaid">flowchart TD
+    %% Resources at the very top
+    subgraph Resources["Resources"]
+        direction LR
+        AN[AlternativeName]
+        O[Operator]
+    end
 
-  subgraph ServiceCalendarFrame["ServiceCalendarFrame"]
-    AC[AvailabilityCondition]
-    UOP[ValidDayBits]
-  end
+    %% Main content area
+    subgraph MainContent["Main Content"]
+        %% Timetable &amp; Calendar
+        subgraph TimetableCalendar["Timetable &amp; Calendar"]
+            direction LR
+            subgraph TimetableFrame["TimetableFrame"]
+                SJ[ServiceJourney]
+                DT[DirectionType]
+                TN[TrainNumber]
+                SI[ServiceJourneyInterchange]
+                JP[JourneyPart]
+            end
+            subgraph ServiceCalendarFrame["ServiceCalendarFrame"]
+                AC[AvailabilityCondition]
+                UOP[ValidDayBits]
+            end
+        end
 
-  subgraph ServiceFrame["ServiceFrame"]
-    L[Line]
-    O[Operator]
-    SSP[ScheduledStopPoint]
-    PSA[PassengerStopAssignment]
-    TL[TimingLink]
-    SJP[ServiceJourneyPattern]
-    TDT[TimeDemandType]
-    SPtJP[StopPointInJourneyPattern]
-  end
+        %% Service &amp; Network
+        subgraph ServiceNetwork["Service &amp; Network"]
+            direction LR
+            subgraph ServiceFrame["ServiceFrame"]
+                SJP[ServiceJourneyPattern]
+                TDT[TimeDemandType]
+                L[Line]
+                SPtJP[StopPointInJourneyPattern]
+                TL[TimingLink]
+                SSP[ScheduledStopPoint]
+                N[Notice]
+                F[ServiceFacilities]
+                PSA[PassengerStopAssignment]
+            end
+            subgraph SiteFrame["SiteFrame"]
+                SP[StopPlace]
+                CN[DefaultConnection]
+                Q[Quay]
+            end
+        end
+    end
 
-  subgraph SiteFrame["SiteFrame"]
-    SP[StopPlace]
-    Q[Quay]
-  end
+    %% Relationships
+    SJ --&gt; DT
+    SJ --&gt; L
+    SJ --&gt; O
+    SJ --&gt; SJP
+    SJ --&gt; TDT
+    SJ --&gt; SI
+    SJ --&gt; JP
+    SJ --&gt; TN
+    SJ --&gt; AC
+    AC --&gt; UOP
+    SJP --&gt; L
+    SJP --&gt; DT
+    SJP --&gt; SPtJP
+    SPtJP --&gt; SSP
+    TDT --&gt; TL
+    TDT --&gt; SSP
+    TDT --&gt; SPtJP
+    PSA --&gt; SP
+    PSA --&gt; Q
+    PSA --&gt; SSP
+    SP --&gt; Q
+    O --&gt; AN
 
-  subgraph OtherStuff["Other stuff"]
-    CN[DefaultConnection]
-    SI[ServiceJourneyInterchange]
-    JP[JourneyPart]
-    N[Notice]
-    AN[AlternativeName]
-    F[ServiceFacilities]
-     SJI[ServiceJourneyInterchange]
-   
-  end
-
-  %% ---------------------
-  %% Visible semantic relationships
-  SJ --&gt; AC
-  SJ --&gt; DT
-  SJ --&gt; L
-  SJ --&gt; O
-  SJ --&gt; SJP
-  SJ --&gt; TDT
-
-  TDT --&gt; TL
-  TDT --&gt; SSP
-  TDT --&gt; SPtJP
-
-  SJP --&gt; L
-  SJP --&gt; SPtJP
-  SPtJP --&gt; SSP
-
-  PSA ---&gt; SP
-  PSA ---&gt; Q
-  PSA ---&gt; SSP
-
-  SP ---&gt; Q
-
-  AC --&gt; UOP
-
-
-  %% ---------------------
-  %% Layout hints to force rows and columns (dashed edges used only as hints)
-
-  %% ---------------------
-  %% Highlight central nodes in green
-  style SJ fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-
-  %% Subgraph box styling (may be renderer-dependent)
-  style TimetableFrame stroke:#999,stroke-width:1px,fill:none
-  style ServiceCalendarFrame stroke:#999,stroke-width:1px,fill:none
-  style ServiceFrame stroke:#999,stroke-width:1px,fill:none
-  style SiteFrame stroke:#999,stroke-width:1px,fill:none
-  style OtherStuff stroke:#999,stroke-width:1px,fill:none
-
-
+    %% Styling
+    style SJ fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TimetableFrame stroke:#999,stroke-width:1px,fill:none
+    style ServiceCalendarFrame stroke:#999,stroke-width:1px,fill:none
+    style ServiceFrame stroke:#999,stroke-width:1px,fill:none
+    style SiteFrame stroke:#999,stroke-width:1px,fill:none
+    style MainContent fill:none,stroke:none
 </code></pre>
+<p><em>Core elements for timetables in NeTEx</em></p>
+
 <p>Notes:</p>
 <ul>
-  <li>Every <code class="language-plaintext highlighter-rouge">ServiceJourney</code> belongs to one Line and has one <code class="language-plaintext highlighter-rouge">Operator</code>. Some more information can be stored in associated <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>s (difference between operator and legal “owner”).</li>
+  <li>Every <code class="language-plaintext highlighter-rouge">ServiceJourney</code> belongs to one <code class="language-plaintext highlighter-rouge">Line</code> and has one <code class="language-plaintext highlighter-rouge">Operator</code>. Some more information can be stored in associated <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>s (difference between operator and legal “owner”).</li>
   <li>The pattern of the stops is defined in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> with additional details about each stop.</li>
-  <li>The timing behaviour is stored in <code class="language-plaintext highlighter-rouge">TimeDemandType</code>. They contain run times and where needed wait times. The relevant <code class="language-plaintext highlighter-rouge">TimingLink</code>s are mostly based on <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s and not individual to each <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
-  <li>The physical stops are modeled as <code class="language-plaintext highlighter-rouge">StopPlace</code>e with <code class="language-plaintext highlighter-rouge">Quays</code>.</li>
+  <li>The timing behaviour is stored in <code class="language-plaintext highlighter-rouge">TimeDemandType</code>. They contain run times and where needed wait times. The <code class="language-plaintext highlighter-rouge">TimingLink</code>s are mostly based on <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s and may be used by multiple <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
+  <li>The physical stops are modeled as <code class="language-plaintext highlighter-rouge">StopPlace</code>s with <code class="language-plaintext highlighter-rouge">Quays</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s are the “logical” stops.</li>
   <li>The <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code> associates the physical and the logical stops.</li>
   <li><code class="language-plaintext highlighter-rouge">DefaultConnection</code> and <code class="language-plaintext highlighter-rouge">SiteConnection</code> define transfers based on site elements.</li>
-  <li><code class="language-plaintext highlighter-rouge">ServiceJourneyMeeting</code>s are used for splitting and joining of trains and “Durchbindungen”.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>s are used for splitting, joining and connecting trains and for “Durchbindungen”.</p>
+  </li>
   <li><code class="language-plaintext highlighter-rouge">Notice</code>, <code class="language-plaintext highlighter-rouge">ServiceFacility</code> and <code class="language-plaintext highlighter-rouge">SiteFacility</code> model almost everything else (especially offers).</li>
   <li>The operating days are defined through <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for the whole timetable year in <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s.</li>
 </ul>
@@ -148,7 +152,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

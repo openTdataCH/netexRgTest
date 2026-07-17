@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/StopPlace.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/StopPlace.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/StopPlace.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/StopPlace.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="StopPlace" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"StopPlace","url":"https://opentdatach.github.io/netexRgTest/tables/StopPlace.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"StopPlace","url":"https://opentdatach.github.io/netexRgTest/main/tables/StopPlace.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,36 +41,250 @@
   </header>
 
   <div class="post-content">
-    <p>| Sub | Element | Usage | Card | Type | Description | Note |
-|—–|———|——-|——|——|————-|——|
-|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | In some cases the id is not a sloid. |
-| + | ValidBetween | optional | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | This can be used to show, when the StopPlace can be used. |
-| ++ | FromDate | mandatory | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
-| ++ | ToDate | mandatory | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID |
-| ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-| + | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| ++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the didok number and the sloid |
-| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
-| + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators). |  |
-| ++ | HafasPriority | optional | 1..1 | unknown |  | Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. |
-| ++ | HafasKMInfo | optional | 1..1 | unknown |  | Special value for Hafas environments. |
-| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
-| + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
-| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>. |
-| +++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
-| +++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
-| +++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
-| + | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | ALTERNATIVE NAMES for MACHINE READABILITY. | Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. |
-| + | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to the identifier of a TOPOGRAPHIC PLACE. | Id to the county, community, canton or country. |
-| + | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
-| + | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
-| + | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. |
-| ++ | <a href="/netexRgTest/tables/Quay.html">Quay</a> | expected | 1..1 | unknown | A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi
-cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically
-contained within its parent QUAY. |  |</p>
+    <p>In some cases the id of a StopPlace is not a SLOID.</p>
+
+<p><em>Table: StopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>ValidBetween</td>
+      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td>This can be used to show, when the StopPlace can be used.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td>Key value pairs for DIDOK number and SLOID</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Centroid</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SimplePoint_VersionStructure</td>
+      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
+      <td>Global or national location</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Location</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocationStructure</td>
+      <td>Absolute location of EQUIPMENT.</td>
+      <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Longitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LongitudeType</td>
+      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Latitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LatitudeType</td>
+      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Altitude</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AltitudeType</td>
+      <td>Altitude.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>alternativeNames</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>alternativeNames_RelStructure</td>
+      <td>ALTERNATIVE NAMES for MACHINE READABILITY.</td>
+      <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TopographicPlaceRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TopographicPlaceRefStructure</td>
+      <td>Reference to the identifier of a TOPOGRAPHIC PLACE.</td>
+      <td>Id to the county, community, canton or country.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>StopTypeEnumeration</td>
+      <td>Type of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LimitedUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>LimitedUseTypeEnumeration</td>
+      <td>Further categorisation of stop as having topographic limitations.</td>
+      <td>For stops like Sagliains</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Weighting</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>InterchangeWeightingEnumeration</td>
+      <td>Default rating of the STOP PLACE for making interchanges.</td>
+      <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>quays</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>quays_RelStructure</td>
+      <td>QUAYs within the STOP PLACE.</td>
+      <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/Quay.html">Quay</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>Quay</td>
+      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
   </div>
 
@@ -78,7 +292,7 @@ contained within its parent QUAY. |  |</p>
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

@@ -5,7 +5,8 @@ This use case describes how transfer times and interchange connections between j
 
 ## Mapping between HRDF and NeTEx 
 
-The following table shows how we will map HRDF tables into NeTEX.
+The following table shows how we will map HRDF tables into NeTEX. 
+> NB: The UMSTEIG tables are curated by INFO+. So they are not delivered in NeTEx to INFO+, but are generated there. 
 
 | HRDF     | NeTEx RG1           | NeTEx RG2                                                                                                      | Use Case                                   |
 |----------|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
@@ -14,7 +15,7 @@ The following table shows how we will map HRDF tables into NeTEX.
 | UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                            | Standardumsteigezeit pro Haltestelle       |
 | METABHF  | `SiteConnection`    | `SiteConnection`                                                                                               | Umsteigezeit zwischen Haltestellen         |
 | UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
-| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`<br>Alternativ für Flügelzug, Vereinigung: <br>JourneyParts, JourneyPartsCouple<br> | Durchbindung, Flügelzug, Vereinigung       |
+| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 
 
 ## Transfer times at a given StopPlace (UMSTEIGB)
@@ -27,7 +28,7 @@ Defines the default transfer time at a specific stop place, regardless of operat
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultConnection  id="ch:1:DefaultConnection:8506302" version="1">
-  <!-- Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
+  <!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. -->
   <WalkTransferDuration>
     <DefaultDuration>PT3M</DefaultDuration>
   </WalkTransferDuration>
@@ -56,7 +57,7 @@ Defines the default transfer time at a specific stop place, regardless of operat
     <TransportMode>tram</TransportMode>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-    <!-- Is a sloid usually. Not set, means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>
 
@@ -102,7 +103,7 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
     </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-    <!-- Is a sloid usually. Not set, means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>
 
@@ -111,8 +112,8 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
 
 
 ## Line and Direction-oriented transfer times (UMSTEIGL)
-Defines transfer times between specific `lines` and `directions` at a stop place. Journeys are specified indirectly via Line and Direction, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
-> **TODO** Adrian we don't have Direction anymore. This should be solved by the PR.
+Defines transfer times between specific `Lines` and `Directions` at a stop place. Journeys are specified indirectly via `Line` and `DirectionType`, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
+> In the Swiss profile, only `DirectionType` (type `DirectionTypeEnumeration`) is used, not `DirectionRef`.
 
 **When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
 
@@ -134,10 +135,10 @@ Defines transfer times between specific `lines` and `directions` at a stop place
   <MaximumWaitTime>PT2M</MaximumWaitTime>
   <!-- If not set or PT0M, connection is considered guaranteed. -->
   <MinimumTransferTime>PT2M</MinimumTransferTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1">
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
     <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1">
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
     <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
   </ToPointRef>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100033:XXXX-001_33PE.j26_YYY" version="1">
@@ -161,7 +162,7 @@ Connection between two services.
 
 The following situations exist: 
 - I.	The connection should not take place. (Prohibition) 
-- II.	The connection must take place, and the traveller must change vehicles
+- II.	The connection must take place, and the traveler must change vehicles
 - III.	The connection has to take place, and the passenger can stay in the vehicle
 
 The differences between the various situations are to be differentiated with the value in some attributes.
@@ -190,10 +191,10 @@ The differences between the various situations are to be differentiated with the
   <!-- If not set or PT0M, connection is considered guaranteed. -->
   <MinimumTransferTime>PT1M</MinimumTransferTime>
   <MaximumTransferTime>PT2M</MaximumTransferTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8506131:1" version="1">
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8506131:1" nameOfRefClass="ScheduledStopPoint" version="1">
     <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8506131:1" version="1">
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8506131:1" nameOfRefClass="ScheduledStopPoint" version="1">
     <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
   </ToPointRef>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" version="1">

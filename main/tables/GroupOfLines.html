@@ -3,25 +3,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>ch-profile_SITE_OFFER | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>GroupOfLines | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="ch-profile_SITE_OFFER" />
+<meta property="og:title" content="GroupOfLines" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/ch-profile_SITE_OFFER.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/ch-profile_SITE_OFFER.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/GroupOfLines.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/GroupOfLines.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ch-profile_SITE_OFFER" />
+<meta property="twitter:title" content="GroupOfLines" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ch-profile_SITE_OFFER","url":"https://opentdatach.github.io/netexRgTest/tables/ch-profile_SITE_OFFER.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"GroupOfLines","url":"https://opentdatach.github.io/netexRgTest/main/tables/GroupOfLines.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -37,11 +37,15 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">ch-profile_SITE_OFFER</h1>
+    <h1 class="post-title">GroupOfLines</h1>
   </header>
 
   <div class="post-content">
-    <table>
+    <p>We use GroupOfLine for the modeling of mixed lines. Only mixed lines have a GroupOfLines.</p>
+
+<p><em>Table: GroupOfLines</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -56,47 +60,38 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>PublicationDelivery</td>
+      <td>members</td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>PublicationDeliveryStructure</td>
-      <td>A set of NeTEx objects as assembled by a publication request or other service. Provides a general purpose wrapper for NeTEx data content.</td>
+      <td>0..1</td>
+      <td>singleJourneyRefs_RelStructure</td>
+      <td>Services in GROUP.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
-      <td>PublicationTimestamp</td>
+      <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>xsd:dateTime</td>
-      <td>Time of output of data.</td>
+      <td>1..*</td>
+      <td>LineRefStructure</td>
+      <td>Reference to a LINE.</td>
+      <td>one must be the main line</td>
+    </tr>
+    <tr>
       <td> </td>
+      <td>MainLineRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LineRefStructure</td>
+      <td>Primary LINE in GROUP OF LINEs, if relevant.</td>
+      <td>The main line must exist. It hasn’t any ServiceJourneyPattern or ServiceJourneys. Those are all on the partial lines.</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td>ParticipantRef</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>siri:ParticipantCodeType</td>
-      <td>Identifier of system requesting Data.</td>
-      <td>Use here a distinctive name</td>
-    </tr>
-    <tr>
-      <td>++++</td>
-      <td><a href="/netexRgTest/tables/SiteFrame.html">SiteFrame</a></td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td>A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td>++++</td>
-      <td>ServiceFrame</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>GroupOfLinesType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>GroupOfLinesTypeEnumeration</td>
+      <td>Classification of GROUP OF LINES. +v1.1</td>
       <td> </td>
     </tr>
   </tbody>
@@ -108,7 +103,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

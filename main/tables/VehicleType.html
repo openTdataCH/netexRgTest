@@ -3,25 +3,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>ScheduledStopPoint | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>VehicleType | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="ScheduledStopPoint" />
+<meta property="og:title" content="VehicleType" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/ScheduledStopPoint.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/ScheduledStopPoint.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/VehicleType.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/VehicleType.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ScheduledStopPoint" />
+<meta property="twitter:title" content="VehicleType" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ScheduledStopPoint","url":"https://opentdatach.github.io/netexRgTest/tables/ScheduledStopPoint.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"VehicleType","url":"https://opentdatach.github.io/netexRgTest/main/tables/VehicleType.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -37,11 +37,15 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">ScheduledStopPoint</h1>
+    <h1 class="post-title">VehicleType</h1>
   </header>
 
   <div class="post-content">
-    <table>
+    <p>Used currently mainly for the relevant accessibility elements that can be expressed currently</p>
+
+<p><em>Table: VehicleType</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -55,85 +59,58 @@
   </thead>
   <tbody>
     <tr>
-      <td>+</td>
-      <td>ScheduledStopPoint</td>
+      <td> </td>
+      <td>@id</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
-      <td>Swiss ScheduledStopPoint are using the sloid in the id, when possible.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>keyList</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+++</td>
-      <td>KeyValue</td>
-      <td>mandatory</td>
-      <td>1..*</td>
-      <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
-      <td>We expect a DIDOK key and a SLOID, whereever possible.</td>
-    </tr>
-    <tr>
-      <td>++++</td>
-      <td>Key</td>
+      <td> </td>
+      <td>@version</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++++</td>
-      <td>Value</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:anyType</td>
-      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>privateCodes</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+++</td>
-      <td>PrivateCode</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Name</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>MultilingualString</td>
-      <td>Name of Traveller</td>
-      <td>The names are the same in all languages.</td>
-    </tr>
-    <tr>
-      <td>++</td>
       <td>ShortName</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
-      <td>StopPlace : Name of the Place, Quay : ShortName of the Quay</td>
+      <td>Will be defined in mapping excel</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LowFloor</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether Vehicle is low floor to facilitate access by the mobility impaired.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>HasLiftOrRamp</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether vehicle has lift or ramp to facilitate wheelchair access.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>HasHoist</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether vehicle has hoist for wheelchair access.</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -144,7 +121,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

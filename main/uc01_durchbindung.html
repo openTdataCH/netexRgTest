@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/uc01_durchbindung.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/uc01_durchbindung.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/uc01_durchbindung.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/uc01_durchbindung.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ServiceJourneyInterchange" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourneyInterchange","url":"https://opentdatach.github.io/netexRgTest/uc01_durchbindung.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourneyInterchange","url":"https://opentdatach.github.io/netexRgTest/main/uc01_durchbindung.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -46,7 +46,7 @@
 <p>A “Durchbindung” (through-service) describes a planned operational connection between two <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s where the same physical vehicle continues under a new service identity — typically with a new line, operator, or train number. 
 From the passenger’s perspective, no vehicle change is required (<code class="language-plaintext highlighter-rouge">StaySeated=true</code>).</p>
 
-<p>This use case also covers splitting (Flügelzug) and joining (Vereinigung) of trains.  Be aware that in this case <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> might be necessary and we discuss it in <a href="/netexRgTest/uc02_joining_splitting.html">use case 2</a>.</p>
+<p>This use case also covers splitting (Flügelzug) and joining (Vereinigung) of trains.  Be aware that in this case <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> might be necessary and we discuss it in <a href="/netexRgTest/main/uc02_joining_splitting.html">use case 2</a>.</p>
 
 <p>All three cases are modeled using <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> in NeTEx RG 2.0, 
 replacing the deprecated <code class="language-plaintext highlighter-rouge">JourneyMeeting</code> and <code class="language-plaintext highlighter-rouge">InterchangeRule</code> from RG 1.0.</p>
@@ -57,13 +57,13 @@ replacing the deprecated <code class="language-plaintext highlighter-rouge">Jour
 </blockquote>
 
 <p><strong>Situation according to Realisation Guide 1.0</strong></p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;JourneyMeeting</span> <span class="na">id=</span><span class="s">"ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;JourneyMeeting</span> <span class="na">id=</span><span class="s">"ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
     <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">versionRef=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;AtStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">versionRef=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;EarliestTime&gt;</span>01:51:00<span class="nt">&lt;/EarliestTime&gt;</span>
   <span class="nt">&lt;LatestTime&gt;</span>02:00:00<span class="nt">&lt;/LatestTime&gt;</span>
@@ -71,21 +71,21 @@ replacing the deprecated <code class="language-plaintext highlighter-rouge">Jour
 </code></pre></div></div>
 
 <p><strong>Situation with Realisation Guide 2.0</strong></p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"2.0"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;validityConditions&gt;</span>
-    	<span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+    	<span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   	<span class="nt">&lt;/validityConditions&gt;</span>
   	<span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
 	<span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
   	<span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
 	<span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
-	<span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
-  	<span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
-	<span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
-	<span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  	<span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
 </code></pre></div></div>
-<p>The detailed handling is described for the element <a href="/netexRgTest/09_timetable.html#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
+<p>The detailed handling is described for the element <a href="/netexRgTest/main/09_timetable.html#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
 
   </div>
 
@@ -93,7 +93,7 @@ replacing the deprecated <code class="language-plaintext highlighter-rouge">Jour
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

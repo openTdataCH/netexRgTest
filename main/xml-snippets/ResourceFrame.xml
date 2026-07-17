@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ResourceFrame  id="ch:1:ResourceFrame" version="any">
+<ResourceFrame  id="ch:1:ResourceFrame" version="1">
   <responsibilitySets>
     <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
     <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
@@ -9,6 +9,7 @@
   <typesOfValue>
     <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
     <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+      <!-- We need a TypeOfNotice ValueSet. -->
       <values>
         <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
           <Name>Allgemeiner Hinweis</Name>
@@ -21,11 +22,22 @@
       </values>
     </ValueSet>
     <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+      <!-- We need a TypeOfProductCategory ValueSet -->
       <values>
         <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
           <Name lang="de">Train Express Regional<Text lang="it">Train Express Regional</Text><Text lang="en">Train Express Regional</Text><Text lang="fr">Train Express Regional</Text></Name>
           <ShortName>TER</ShortName>
         </TypeOfProductCategory>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+      <values>
+        <TypeOfPlace id="drtCollectionPoint" version="1">
+          <Name lang="de">Sammelpunkt<Text lang="en">Collection Point</Text></Name>
+        </TypeOfPlace>
+        <TypeOfPlace id="regularStop" version="1">
+          <Name lang="de">Reguläre Haltestelle<Text lang="en">Regular Stop</Text></Name>
+        </TypeOfPlace>
       </values>
     </ValueSet>
   </typesOfValue>
@@ -43,4 +55,7 @@
     <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
     <ServiceFacilitySet id="generated" version="1"/>
   </serviceFacilitySets>
+  <vehicleTypes>
+    <VehicleType id="tbd" version="1"/>
+  </vehicleTypes>
 </ResourceFrame>

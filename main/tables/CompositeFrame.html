@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/CompositeFrame.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/CompositeFrame.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/CompositeFrame.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/CompositeFrame.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="CompositeFrame" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"CompositeFrame","url":"https://opentdatach.github.io/netexRgTest/tables/CompositeFrame.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"CompositeFrame","url":"https://opentdatach.github.io/netexRgTest/main/tables/CompositeFrame.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,9 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p><em>Table: CompositeFrame</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -56,16 +58,43 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>CompositeFrame</td>
-      <td>mandatory</td>
+      <td>ValidBetween</td>
+      <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>ValidBetween</td>
+      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td>This defines which timetable year is meant. We don’t support partial delivery.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="/netexRgTest/tables/FrameDefaults.html">FrameDefaults</a></td>
+      <td>ToDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td>A description of the delivery can be provided.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRgTest/main/tables/FrameDefaults.html">FrameDefaults</a></td>
       <td>expected</td>
       <td>0..1</td>
       <td>VersionFrameDefaultsStructure</td>
@@ -73,7 +102,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>frames</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -82,47 +111,47 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ResourceFrame.html">ResourceFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ResourceFrame.html">ResourceFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ResourceFrame</td>
       <td>A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/SiteFrame.html">SiteFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/SiteFrame.html">SiteFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>SiteFrame</td>
       <td>A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceFrame.html">ServiceFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceFrame.html">ServiceFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceFrame</td>
       <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceCalendarFrame</td>
       <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/TimetableFrame.html">TimetableFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TimetableFrame.html">TimetableFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>TimetableFrame</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
@@ -135,7 +164,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

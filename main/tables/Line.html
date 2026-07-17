@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/Line.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/Line.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/Line.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/Line.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Line" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Line","url":"https://opentdatach.github.io/netexRgTest/tables/Line.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Line","url":"https://opentdatach.github.io/netexRgTest/main/tables/Line.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>For referencing the <code class="language-plaintext highlighter-rouge">Operator</code>s we redundantly use <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code> and <code class="language-plaintext highlighter-rouge">OperatorRef</code>. This is to maintain compatibility with different data consumers.</p>
+
+<p><em>Table: Line</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -56,24 +60,42 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>Line</td>
+      <td>@id</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
-      <td>We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>ValidBetween</td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>ValidBetween</td>
       <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
       <td>Usually set to the whole timetable year</td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>FromDate</td>
       <td>expected</td>
       <td>0..1</td>
@@ -82,7 +104,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>ToDate</td>
       <td>expected</td>
       <td>0..1</td>
@@ -91,7 +113,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>keyList</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -100,7 +122,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>KeyValue</td>
       <td>expected</td>
       <td>1..*</td>
@@ -109,7 +131,7 @@
       <td>The SLNID is mandatory, when it exists</td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>Key</td>
       <td>expected</td>
       <td>1..1</td>
@@ -118,7 +140,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>Value</td>
       <td>expected</td>
       <td>0..1</td>
@@ -127,7 +149,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td>The SLNID is mandatory, when it exists</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>Name</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -136,7 +167,7 @@
       <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ShortName</td>
       <td>expected</td>
       <td>0..1</td>
@@ -145,7 +176,7 @@
       <td>contains the LinieKurzName (attribut N T in HRDF)</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>TransportMode</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -154,25 +185,25 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td>RailSubmode</td>
-      <td>expected</td>
+      <td> </td>
+      <td>TransportSubmode</td>
+      <td>optional</td>
       <td>1..1</td>
-      <td>RailSubmodeEnumeration</td>
-      <td>TPEG pti02 Rail submodes loc13.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>See also See ERA B.4.7009 - Name: Item description code.</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>TransportSubmodeStructure</td>
+      <td>A submode of a public or private TRANSPORT MODE.</td>
+      <td>the mapping excel describe how to use the TransportSubmode</td>
     </tr>
     <tr>
       <td>+</td>
+      <td>RailSubmode</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>RailSubmodeEnumeration</td>
+      <td>TPEG pti02 Rail submodes loc13. See also See ERA B.4.7009 - Name: Item description code.</td>
+      <td>Here an example for rail. Be aware that other XXXSubmode are used for other mode.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>PublicCode</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -181,31 +212,40 @@
       <td>Contains LinieLangName (attribute LT from HRDF)</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>OperatorRef</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>1..1</td>
       <td>OperatorRefStructure</td>
       <td>Reference to an OPERATOR.</td>
-      <td>The operator is the transport organisation that really will do the operation. If different from AuthorityRef</td>
+      <td>The operator is the transport organisation that really “owns” the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>additionalOperators</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>transportOrganisationRefs_RelStructure</td>
+      <td>Additional OPERATORs for LINE.</td>
+      <td>Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LineType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LineTypeEnumeration</td>
+      <td>Classification of LINE, including flexible options. +v2.0.</td>
+      <td>Will be used especially, when not “fixed”. Details in mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>TypeOfProductCategoryRef</td>
       <td>mandatory</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>See ERA B.4 7037 Characteristic description code.</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
       <td>Always aligned with BS KI oev-info.ch</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -216,7 +256,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

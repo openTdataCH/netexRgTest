@@ -2,15 +2,10 @@
 <TemplateServiceJourney  id="generated" version="1">
   <!-- TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
   <validityConditions>
-    <!-- Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-    <AvailabilityCondition id="generated" version="1">
-      <!-- More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
-      <FromDate>2026-05-17T00:00:00Z</FromDate>
-      <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <ToDate>2026-05-17T00:00:00Z</ToDate>
-      <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <ValidDayBits>01010111</ValidDayBits>
-    </AvailabilityCondition>
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityConditionRef ref="generated" version="1">
+      <!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed -->
+    </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
     <!-- Key list for the repeating journeys. Contains the SJYID. -->
@@ -21,8 +16,9 @@
     </KeyValue>
   </keyList>
   <privateCodes>
-    <!-- Replaces the single PrivateCode. -->
+    <!-- Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region -->
     <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+    <PrivateCode type="rn">12</PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
@@ -45,6 +41,15 @@
   <!-- Departure of the first journey. -->
   <DepartureDayOffset>0</DepartureDayOffset>
   <!-- DayOffset if relevant. -->
+  <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" nameOfRefClass="ServiceJourneyPattern" version="1">
+    <!-- The reference to the ServiceJourneyPattern -->
+  </JourneyPatternRef>
+  <TimeDemandTypeRef ref="generated" version="1">
+    <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+  </TimeDemandTypeRef>
+  <VehicleTypeRef ref="ch:1:VehicleType:NF" version="1">
+    <!-- Mostly used for accessibility information -->
+  </VehicleTypeRef>
   <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
   <DirectionType>inbound</DirectionType>
   <!-- Allowed are: inbound, outbound -->
@@ -52,10 +57,7 @@
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <Name lang="de">Wollishofen</Name>
-    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
     <DestinationDisplayRef ref="generated" version="1"/>
-    <PlaceRef ref="ch:1:sloid:3412" version="1"/>
   </Destination>
   <parts>
     <!-- For some use cases e.g. change of Facilities during ServiceJourney -->

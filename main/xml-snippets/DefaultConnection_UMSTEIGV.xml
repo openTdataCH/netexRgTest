@@ -27,6 +27,6 @@
     </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-    <!-- Is a sloid usually. Not set, means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>

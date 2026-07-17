@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceFrame  id="ch:1:ServiceFrame" version="any">
+<ServiceFrame  id="ch:1:ServiceFrame" version="1">
   <!-- A minimal ServiceFrame must be present in all timetable files. -->
   <directions>
     <!-- We don't use directions, but only direction type -->
@@ -13,6 +13,12 @@
       <!-- We work with Line only. -->
     </FlexibleLine>
   </lines>
+  <groupsOfLines>
+    <GroupOfLines id="generated" version="1">
+      <!-- We use GroupOfLine for the modeling of mixed lines -->
+      <Name>Group_name</Name>
+    </GroupOfLines>
+  </groupsOfLines>
   <destinationDisplays>
     <!-- We only allow fully formed content of destinationDisplays -->
     <DestinationDisplay id="generated-id" version="1">
@@ -20,19 +26,11 @@
     </DestinationDisplay>
   </destinationDisplays>
   <scheduledStopPoints>
-    <!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. -->
+    <!-- Swiss ScheduledStopPoint are using the SLOID in the id if possible. -->
     <ScheduledStopPoint id="sloid_where_possible" version="1">
-      <!-- The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
+      <!-- The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part. -->
     </ScheduledStopPoint>
   </scheduledStopPoints>
-  <connections>
-    <SiteConnection id="generated" version="1">
-      <!-- SiteConnection are used only in SITE_OFFER. -->
-    </SiteConnection>
-    <DefaultConnection id="generated" version="1">
-      <!-- DefaultConnection is only used in the SITE_OFFER -->
-    </DefaultConnection>
-  </connections>
   <stopAssignments>
     <PassengerStopAssignment id="generated" version="1">
       <!-- are only used in a special PSA file in the export. -->
@@ -52,4 +50,10 @@
   <timeDemandTypes>
     <TimeDemandType id="generated" version="1"/>
   </timeDemandTypes>
+  <notices>
+    <!-- notices may be present or not -->
+    <Notice id="generated" version="1">
+      <!-- if notices are present, one Notice must be. -->
+    </Notice>
+  </notices>
 </ServiceFrame>

@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/DefaultConnection_Modes.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/DefaultConnection_Modes.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/DefaultConnection_Modes.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/DefaultConnection_Modes.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="DefaultConnection_Modes" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"DefaultConnection_Modes","url":"https://opentdatach.github.io/netexRgTest/tables/DefaultConnection_Modes.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"DefaultConnection_Modes","url":"https://opentdatach.github.io/netexRgTest/main/tables/DefaultConnection_Modes.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair.</p>
+
+<p><em>Table: DefaultConnection</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -56,15 +60,6 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>DefaultConnection</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
-      <td>General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair.</td>
-    </tr>
-    <tr>
-      <td>+</td>
       <td>WalkTransferDuration</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -73,7 +68,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>DefaultDuration</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -82,7 +77,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>From</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -91,7 +86,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>TransportMode</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -100,7 +95,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>To</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -109,13 +104,13 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>StopPlaceRef</td>
       <td>expected</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
       <td>System identifier of a STOP PLACE. May be omitted if given by context.</td>
-      <td>Is a sloid usually. Not set, means whole network.</td>
+      <td>Usually a SLOID. Not set means whole network.</td>
     </tr>
   </tbody>
 </table>
@@ -126,7 +121,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

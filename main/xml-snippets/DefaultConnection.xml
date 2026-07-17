@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultConnection  id="11-11" version="1">
-  <!-- Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
+  <!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. -->
   <Extensions>
     <!-- When also ProductCategory is relevant, then this extension must be used -->
     <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
@@ -16,7 +16,7 @@
     <MobilityRestrictedTravellerDuration>PT4M</MobilityRestrictedTravellerDuration>
   </WalkTransferDuration>
   <BothWays>false</BothWays>
-  <!-- We always intend to use only one way, because the behaviour may not be the same. -->
+  <!-- Should be false - we always intend to use only one way because the behaviour may not be the same. -->
   <From>
     <TransportMode>all</TransportMode>
     <OperatorView>
@@ -30,6 +30,6 @@
     </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-    <!-- Is a sloid usually. Not set, means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>

@@ -3,25 +3,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>The NeTEx Structure | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>The Frames Structure | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="The NeTEx Structure" />
+<meta property="og:title" content="The Frames Structure" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/05_frames.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/05_frames.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/05_frames.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/05_frames.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="The NeTEx Structure" />
+<meta property="twitter:title" content="The Frames Structure" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"The NeTEx Structure","url":"https://opentdatach.github.io/netexRgTest/05_frames.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"The Frames Structure","url":"https://opentdatach.github.io/netexRgTest/main/05_frames.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -37,7 +37,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">The NeTEx Structure</h1>
+    <h1 class="post-title">The Frames Structure</h1>
   </header>
 
   <div class="post-content">
@@ -49,7 +49,7 @@
 </ul>
 
 <h2 id="publicationdelivery">PublicationDelivery</h2>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#publicationdelivery">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#publicationdelivery">Glossary definition</a></em></p>
 
 <h3 id="purpose">Purpose</h3>
 <p>Any valid XML document must start with one root element.
@@ -59,6 +59,10 @@
 participant’s identifier.</p>
 
 <h3 id="table">Table</h3>
+
+<p>For PublicationDelivery have a good look at how the attributes must be done in the provided examples.</p>
+
+<p><em>Table: PublicationDelivery</em></p>
 
 <table>
   <thead>
@@ -75,15 +79,60 @@ participant’s identifier.</p>
   <tbody>
     <tr>
       <td> </td>
-      <td>PublicationDelivery</td>
+      <td>@xmlns</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>PublicationDeliveryStructure</td>
-      <td>A set of NeTEx objects as assembled by a publication request or other service. Provides a general purpose wrapper for NeTEx data content.</td>
+      <td>xsd:string</td>
+      <td>Attribute xmlns</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@xlmns:xsi</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute xlmns:xsi</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@xsi:schemaLocation</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute xsi:schemaLocation</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@xmlns:gml</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute xmlns:gml</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@xmlns:siri</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute xmlns:siri</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>PublicationTimestamp</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -92,7 +141,7 @@ participant’s identifier.</p>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ParticipantRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -101,20 +150,29 @@ participant’s identifier.</p>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>dataObjects</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>unknown</td>
+      <td>dataObjects</td>
       <td>NeTEx Entities of any type.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/CompositeFrame.html">CompositeFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/CompositeFrame.html">CompositeFrame</a></td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>CompositeFrame</td>
       <td>A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
@@ -126,9 +184,11 @@ participant’s identifier.</p>
 <h3 id="example">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;PublicationDelivery</span>  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">version=</span><span class="s">"1.0"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;PublicationDelivery</span>  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">version=</span><span class="s">"2.1"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For PublicationDelivery have a good look at how the attributes must be done in the provided examples. --&gt;</span>
   <span class="nt">&lt;PublicationTimestamp&gt;</span>2026-03-30T12:00:00<span class="nt">&lt;/PublicationTimestamp&gt;</span>
   <span class="nt">&lt;ParticipantRef&gt;</span>SKI-Templates<span class="nt">&lt;/ParticipantRef&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>Standard export 2027-06-02 for Bernmobil.<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;dataObjects&gt;</span>
     <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;FrameDefaults/&gt;</span>
@@ -145,13 +205,12 @@ participant’s identifier.</p>
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/PublicationDelivery.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/PublicationDelivery.xml">Template</a></em></p>
 
 <h3 id="usage-notes">Usage Notes</h3>
-
 <ul>
-  <li>Basically, the containers could be defined arbitrarily. We are using the most common used version.</li>
-  <li>Be aware that what should be in a Frame in a given file is defined by the organisation of files that are defined in chapter on the <a href="/netexRgTest/04_files.html">files</a>.</li>
+  <li>We use the standard <code class="language-plaintext highlighter-rouge">frames</code> of NeTEx</li>
+  <li>Which file needs to contain what <code class="language-plaintext highlighter-rouge">Frame</code> and with what content is defined in the  <a href="/netexRgTest/main/04_files.html">files</a> chapter.</li>
 </ul>
 
 <h2 id="frames">Frames</h2>
@@ -173,31 +232,29 @@ participant’s identifier.</p>
       <td>Container for the <code class="language-plaintext highlighter-rouge">FrameDefaults</code> and the other frames.</td>
     </tr>
     <tr>
-      <td><a href="/netexRgTest/10_common.html#resourceframe">ResourceFrame</a></td>
-      <td>General purpose elements such as <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>, <code class="language-plaintext highlighter-rouge">Organisation</code>, <code class="language-plaintext highlighter-rouge">Operator</code>, <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> and <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code>. <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code> and <code class="language-plaintext highlighter-rouge">TypeOfNotice</code> are to be defined in a <code class="language-plaintext highlighter-rouge">ValueSet</code>. <code class="language-plaintext highlighter-rouge">VehicleType</code> is not used.</td>
+      <td><a href="/netexRgTest/main/10_common.html#resourceframe">ResourceFrame</a></td>
+      <td>General purpose elements such as <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>, <code class="language-plaintext highlighter-rouge">Organisation</code>, <code class="language-plaintext highlighter-rouge">Operator</code>, <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> and <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code>. <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code> and <code class="language-plaintext highlighter-rouge">TypeOfNotice</code> are to be defined in a <code class="language-plaintext highlighter-rouge">ValueSet</code>.</td>
     </tr>
     <tr>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><a href="/netexRgTest/06_stops.html#siteframe">SiteFrame</a></td>
+      <td><a href="/netexRgTest/main/06_stops.html#siteframe">SiteFrame</a></td>
       <td>Contains the physical infrastructure model: Encloses elements describing locations like <code class="language-plaintext highlighter-rouge">Site</code>, <code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code> and <code class="language-plaintext highlighter-rouge">TopographicPlace</code>.</td>
     </tr>
     <tr>
-      <td><a href="/netexRgTest/07_service.html#serviceframe">ServiceFrame</a></td>
-      <td>Contains, among other, the network model with elements such as <code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">Route</code>, the service pattern model with <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and <code class="language-plaintext highlighter-rouge">JourneyPattern</code> and <code class="language-plaintext highlighter-rouge">Connection</code> elements for the topological model of interchanges.</td>
+      <td><a href="/netexRgTest/main/07_service.html#serviceframe">ServiceFrame</a></td>
+      <td>Contains, among other, the network model with elements such as <code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">Route</code>, the service pattern model with <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">DefaultConnection</code>, <code class="language-plaintext highlighter-rouge">SiteConnection</code>, <code class="language-plaintext highlighter-rouge">TimingLink</code> elements for the topological model of interchanges.</td>
     </tr>
     <tr>
-      <td><a href="/netexRgTest/08_service_calendars.html#servicecalendarframe">ServiceCalendarFrame</a></td>
+      <td><a href="/netexRgTest/main/08_service_calendars.html#servicecalendarframe">ServiceCalendarFrame</a></td>
       <td>Contains calendar specific elements like <code class="language-plaintext highlighter-rouge">AvailabilityConditions</code>, <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> and <code class="language-plaintext highlighter-rouge">DayType</code> that are referenced in other frames like the <code class="language-plaintext highlighter-rouge">TimetableFrame</code>.</td>
     </tr>
     <tr>
-      <td><a href="/netexRgTest/09_timetable.html#timetableframe">TimetableFrame</a></td>
-      <td>Contains the operational journey definitions with elements like <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">PassingTimes</code>, <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> and others.</td>
+      <td><a href="/netexRgTest/main/09_timetable.html#timetableframe">TimetableFrame</a></td>
+      <td>Contains the operational journey definitions with elements like <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TimeDemandType</code>, <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> and others.</td>
     </tr>
   </tbody>
 </table>
+
+<p><em>Table: Content of the frames</em></p>
 
 <blockquote>
   <p>The following frames are <strong>not to be used</strong> in Switzerland:</p>
@@ -211,13 +268,17 @@ participant’s identifier.</p>
 </blockquote>
 
 <h2 id="compositeframe">CompositeFrame</h2>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#compositeframe">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#compositeframe">Glossary definition</a></em></p>
 
 <h3 id="purpose-1">Purpose</h3>
 <p>The <code class="language-plaintext highlighter-rouge">CompositeFrame</code> is the container for the <code class="language-plaintext highlighter-rouge">FrameDefaults</code> and the other frames like <code class="language-plaintext highlighter-rouge">ResourceFrame</code>, <code class="language-plaintext highlighter-rouge">SiteFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and <code class="language-plaintext highlighter-rouge">TimeTableFrame</code>, 
 appearing in this order.</p>
 
+<p>Their full documentation can be found here: <a href="/netexRgTest/main/10_common.html#resourceframe">ResourceFrame</a>, <a href="/netexRgTest/main/06_stops.html#siteframe">SiteFrame</a>, <a href="/netexRgTest/main/07_service.html#serviceframe">ServiceFrame</a>, <a href="/netexRgTest/main/08_service_calendars.html#servicecalendarframe">ServiceCalendarFrame</a>, <a href="/netexRgTest/main/09_timetable.html#timetableframe">TimetableFrame</a></p>
+
 <h3 id="table-1">Table</h3>
+
+<p><em>Table: CompositeFrame</em></p>
 
 <table>
   <thead>
@@ -234,16 +295,43 @@ appearing in this order.</p>
   <tbody>
     <tr>
       <td> </td>
-      <td>CompositeFrame</td>
-      <td>mandatory</td>
+      <td>ValidBetween</td>
+      <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>ValidBetween</td>
+      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td>This defines which timetable year is meant. We don’t support partial delivery.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="/netexRgTest/tables/FrameDefaults.html">FrameDefaults</a></td>
+      <td>ToDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td>A description of the delivery can be provided.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRgTest/main/tables/FrameDefaults.html">FrameDefaults</a></td>
       <td>expected</td>
       <td>0..1</td>
       <td>VersionFrameDefaultsStructure</td>
@@ -251,7 +339,7 @@ appearing in this order.</p>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>frames</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -260,48 +348,48 @@ appearing in this order.</p>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ResourceFrame.html">ResourceFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ResourceFrame.html">ResourceFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ResourceFrame</td>
       <td>A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/SiteFrame.html">SiteFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/SiteFrame.html">SiteFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>SiteFrame</td>
       <td>A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceFrame.html">ServiceFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceFrame.html">ServiceFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceFrame</td>
       <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceCalendarFrame</td>
       <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/TimetableFrame.html">TimetableFrame</a> to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TimetableFrame.html">TimetableFrame</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimetableFrame</td>
+      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -313,7 +401,23 @@ appearing in this order.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;CompositeFrame</span>  <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;FrameDefaults/&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="c">&lt;!-- This defines which timetable year is meant. We don't support partial delivery. --&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>
+    <span class="c">&lt;!-- A description of the delivery can be provided. --&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;FrameDefaults&gt;</span>
+    <span class="nt">&lt;DefaultLocale&gt;</span>
+      <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
+      <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+      <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+      <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
+    <span class="nt">&lt;/DefaultLocale&gt;</span>
+    <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
+  <span class="nt">&lt;/FrameDefaults&gt;</span>
   <span class="nt">&lt;frames&gt;</span>
     <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -325,7 +429,7 @@ appearing in this order.</p>
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/CompositeFrame.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/CompositeFrame.xml">Template</a></em></p>
 
   </div>
 
@@ -333,7 +437,7 @@ appearing in this order.</p>
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

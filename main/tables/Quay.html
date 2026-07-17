@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/Quay.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/Quay.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/Quay.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/Quay.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Quay" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Quay","url":"https://opentdatach.github.io/netexRgTest/tables/Quay.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Quay","url":"https://opentdatach.github.io/netexRgTest/main/tables/Quay.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated.</p>
+
+<p><em>Table: Quay</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -55,7 +59,25 @@
   </thead>
   <tbody>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>keyList</td>
       <td>expected</td>
       <td>1..1</td>
@@ -64,16 +86,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>KeyValue</td>
       <td>expected</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>Key value pair for Entity.</td>
-      <td>When no sloid is possible, it may be empty</td>
+      <td>When no SLOID is possible it may be omitted.</td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>Key</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -82,7 +104,7 @@
       <td>SLOID is mandatory key</td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>Value</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -91,7 +113,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
       <td>1..1</td>
@@ -100,7 +122,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>PrivateCode</td>
       <td>expected</td>
       <td>1..1</td>
@@ -110,7 +132,16 @@
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="/netexRgTest/tables/Centroid.html">Centroid</a></td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRgTest/main/tables/Centroid.html">Centroid</a></td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
@@ -118,7 +149,7 @@
       <td>Location of Quay.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>SiteRef</td>
       <td>optional</td>
       <td>0..1</td>
@@ -127,7 +158,7 @@
       <td>Can reference the parent Quay or StopPlace</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>PublicCode</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -144,7 +175,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

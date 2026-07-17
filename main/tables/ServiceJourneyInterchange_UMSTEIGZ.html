@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/ServiceJourneyInterchange_UMSTEIGZ.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/ServiceJourneyInterchange_UMSTEIGZ.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/ServiceJourneyInterchange_UMSTEIGZ.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/ServiceJourneyInterchange_UMSTEIGZ.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ServiceJourneyInterchange_UMSTEIGZ" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourneyInterchange_UMSTEIGZ","url":"https://opentdatach.github.io/netexRgTest/tables/ServiceJourneyInterchange_UMSTEIGZ.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourneyInterchange_UMSTEIGZ","url":"https://opentdatach.github.io/netexRgTest/main/tables/ServiceJourneyInterchange_UMSTEIGZ.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required.</p>
+
+<p><em>Table: ServiceJourneyInterchange</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -56,15 +60,24 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>ServiceJourneyInterchange</td>
+      <td>@id</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
-      <td>Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>validityConditions</td>
       <td>expected</td>
       <td>1..1</td>
@@ -73,16 +86,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>AvailabilityConditionRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>Description</td>
       <td>optional</td>
       <td>0..1</td>
@@ -91,25 +104,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>StaySeated</td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE.</td>
+      <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>Default is false.</td>
       <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
       <td>CrossBorder</td>
       <td>optional</td>
       <td>0..1</td>
@@ -118,7 +122,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>Planned</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -127,7 +131,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>Guaranteed</td>
       <td>optional</td>
       <td>0..1</td>
@@ -136,7 +140,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>MaximumWaitTime</td>
       <td>optional</td>
       <td>0..1</td>
@@ -145,7 +149,7 @@
       <td>If not set or PT0M, connection is considered guaranteed.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>MinimumTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
@@ -154,7 +158,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>MaximumTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
@@ -163,7 +167,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>FromPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -172,7 +176,16 @@
       <td>ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>ToPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -181,7 +194,16 @@
       <td>ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>FromServiceJourneyRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -190,7 +212,7 @@
       <td>Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ToServiceJourneyRef</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -207,7 +229,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

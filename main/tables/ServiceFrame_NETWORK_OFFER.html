@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/tables/ServiceFrame_NETWORK_OFFER.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/tables/ServiceFrame_NETWORK_OFFER.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/tables/ServiceFrame_NETWORK_OFFER.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/tables/ServiceFrame_NETWORK_OFFER.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ServiceFrame_NETWORK_OFFER" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceFrame_NETWORK_OFFER","url":"https://opentdatach.github.io/netexRgTest/tables/ServiceFrame_NETWORK_OFFER.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceFrame_NETWORK_OFFER","url":"https://opentdatach.github.io/netexRgTest/main/tables/ServiceFrame_NETWORK_OFFER.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -41,7 +41,11 @@
   </header>
 
   <div class="post-content">
-    <table>
+    <p>A minimal ServiceFrame must be present in all timetable files.</p>
+
+<p><em>Table: ServiceFrame</em></p>
+
+<table>
   <thead>
     <tr>
       <th>Sub</th>
@@ -55,7 +59,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>lines</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -64,16 +68,34 @@
       <td>Only Line is used and not FlexibleLine</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/Line.html">Line</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/Line.html">Line</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>Line</td>
       <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
       <td> </td>
     </tr>
     <tr>
+      <td> </td>
+      <td>groupsOfLines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>groupsOfLinesInFrame_RelStructure</td>
+      <td>Groups of LINEs in NETWORK.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>+</td>
+      <td><a href="/netexRgTest/main/tables/GroupOfLines.html">GroupOfLines</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>GroupOfLines</td>
+      <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
+      <td>We use GroupOfLine for the modeling of mixed lines</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>destinationDisplays</td>
       <td>expected</td>
       <td>0..1</td>
@@ -82,25 +104,34 @@
       <td>We only allow fully formed content of destinationDisplays</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/DestinationDisplay.html">DestinationDisplay</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/DestinationDisplay.html">DestinationDisplay</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>DestinationDisplay</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
       <td>We only allow fully formed content of destinationDisplays</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>scheduledStopPoints</td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>scheduledStopPointsInFrame_RelStructure</td>
       <td>SCHEDULED STOP POINTs in frame.</td>
-      <td>Swiss ScheduledStopPoint are using the sloid in the id, when possible.</td>
+      <td>Swiss ScheduledStopPoint are using the SLOID in the id if possible.</td>
     </tr>
     <tr>
       <td>+</td>
+      <td><a href="ScheduledStopPoint.md">ScheduledStopPoint</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint</td>
+      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>stopAssignments</td>
       <td>expected</td>
       <td>0..1</td>
@@ -109,17 +140,17 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>PassengerStopAssignment</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
       <td>are only used in a special PSA file in the export.</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td><a href="timingLinks.md">timingLinks</a></td>
+      <td> </td>
+      <td>timingLinks</td>
       <td>expected</td>
       <td>0..1</td>
       <td>timingLinksInFrame_RelStructure</td>
@@ -128,6 +159,15 @@
     </tr>
     <tr>
       <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TimingLink.html">TimingLink</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimingLink</td>
+      <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
+      <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>journeyPatterns</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -136,17 +176,17 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ServiceJourneyPattern</td>
       <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
-      <td><a href="timeDemandTypes.md">timeDemandTypes</a></td>
+      <td> </td>
+      <td>timeDemandTypes</td>
       <td>expected</td>
       <td>0..1</td>
       <td>timeDemandTypeRefs_RelStructure</td>
@@ -155,6 +195,15 @@
     </tr>
     <tr>
       <td>+</td>
+      <td><a href="/netexRgTest/main/tables/TimeDemandType.html">TimeDemandType</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimeDemandType</td>
+      <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>notices</td>
       <td>expected</td>
       <td>0..1</td>
@@ -163,11 +212,11 @@
       <td>notices may be present or not</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/Notice.html">Notice</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/Notice.html">Notice</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>Notice</td>
       <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
       <td>if notices are present, one Notice must be.</td>
     </tr>
@@ -180,7 +229,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 

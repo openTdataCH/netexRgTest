@@ -9,19 +9,19 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/08_service_calendars.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/08_service_calendars.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRgTest/main/08_service_calendars.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRgTest/main/08_service_calendars.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Service calendars" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Service calendars","url":"https://opentdatach.github.io/netexRgTest/08_service_calendars.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Service calendars","url":"https://opentdatach.github.io/netexRgTest/main/08_service_calendars.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/netexRgTest/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<link rel="stylesheet" href="/netexRgTest/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRgTest/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRgTest/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -52,10 +52,10 @@
 </ul>
 
 <h2 id="servicecalendarframe">ServiceCalendarFrame</h2>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#servicecalendarframe">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#servicecalendarframe">Glossary definition</a></em></p>
 
 <h3 id="purpose">Purpose</h3>
-<p>Groups calendar definitions that describe when services operate - <code class="language-plaintext highlighter-rouge">DayType</code>s, [operating periods, <strong>TODO</strong> we don’t define / use OperatingPeriod, do we?] and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s. Wilfried 10.6.</p>
+<p>Groups calendar definitions that describe <strong>when</strong> services operate. We do this with <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s stored in this frame. We also have <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s for the holidays.</p>
 
 <p>See the following class diagram for the most important objects of the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their relationships to the other frames.</p>
 
@@ -129,7 +129,13 @@
 
 
 </code></pre>
+<p><em>Figure: Elements of ServiceCalendar and elements with AvailabilityCondition</em></p>
+
 <h4 id="table">Table</h4>
+
+<p>A minimal ServiceCalendarFrame must be present in all timetable files.</p>
+
+<p><em>Table: ServiceCalendarFrame</em></p>
 
 <table>
   <thead>
@@ -146,15 +152,24 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>ServiceCalendarFrame</td>
-      <td>expected</td>
+      <td>@id</td>
+      <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
-      <td>A minimal ServiceCalendarFrame must be present in all timetable files.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>validityConditions</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -163,43 +178,43 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>AvailabilityCondition</td>
       <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
-      <td> </td>
+      <td>Our main mechanism for validity and operating days</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td><a href="/netexRgTest/tables/ServiceCalendar.html">ServiceCalendar</a></td>
+      <td> </td>
+      <td><a href="/netexRgTest/main/tables/ServiceCalendar.html">ServiceCalendar</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>ServiceCalendar</td>
       <td>A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs.</td>
-      <td> </td>
+      <td>We only have one ServiceCalendar for the whole timetable year. It is not referenced.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>dayTypes</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>unknown</td>
+      <td>dayTypeRefs_RelStructure</td>
       <td>DAY TYPEs for BLOCK.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/DayType.html">DayType</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/DayType.html">DayType</a></td>
       <td>optional</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>DayType</td>
       <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
-      <td> </td>
+      <td>Used for holidays only</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>timebands</td>
       <td>expected</td>
       <td>0..1</td>
@@ -208,13 +223,31 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td>Timeband</td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/Timeband.html">Timeband</a></td>
       <td>expected</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>Timeband_VersionedChildStructure</td>
       <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
+      <td>Mainly used for frequency-based lines.</td>
+    </tr>
+    <tr>
       <td> </td>
+      <td>dayTypeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dayTypeAssignments_RelStructure</td>
+      <td>Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/DayTypeAssignment.html">DayTypeAssignment</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>DayTypeAssignment</td>
+      <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
+      <td>Used for holidays only</td>
     </tr>
   </tbody>
 </table>
@@ -227,34 +260,50 @@
 <span class="nt">&lt;ServiceCalendarFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- A minimal ServiceCalendarFrame must be present in all timetable files. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"ch:1:AvailabilityCondition:b7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"ch:1:AvailabilityCondition:b7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Our main mechanism for validity and operating days --&gt;</span>
+    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
-  <span class="nt">&lt;ServiceCalendar</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendar:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceCalendar</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendar:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- We only have one ServiceCalendar for the whole timetable year. It is not referenced. --&gt;</span>
+  <span class="nt">&lt;/ServiceCalendar&gt;</span>
   <span class="nt">&lt;dayTypes&gt;</span>
-    <span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used for holidays only --&gt;</span>
+    <span class="nt">&lt;/DayType&gt;</span>
   <span class="nt">&lt;/dayTypes&gt;</span>
   <span class="nt">&lt;timebands&gt;</span>
-    <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:1140:1260"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:1140:1260"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Mainly used for frequency-based lines. --&gt;</span>
+    <span class="nt">&lt;/Timeband&gt;</span>
   <span class="nt">&lt;/timebands&gt;</span>
+  <span class="nt">&lt;dayTypeAssignments&gt;</span>
+    <span class="nt">&lt;DayTypeAssignment</span> <span class="na">id=</span><span class="s">"none"</span> <span class="na">version=</span><span class="s">"not"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used for holidays only --&gt;</span>
+      <span class="nt">&lt;OperatingPeriodRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;DayTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/DayTypeAssignment&gt;</span>
+  <span class="nt">&lt;/dayTypeAssignments&gt;</span>
 <span class="nt">&lt;/ServiceCalendarFrame&gt;</span>
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/ServiceCalendarFrame.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/ServiceCalendarFrame.xml">Template</a></em></p>
 
 <h4 id="usage-notes">Usage Notes</h4>
 <ul>
-  <li>Note that VALIDITY CONDITIONs could be combined and ANDed (all the conditions must be fullfiled at the same time) thanks to the WITH CONDITION REF attribute. We will work with FromDate/ToDate and ValidDayBits of AvailabilityCondition only.</li>
+  <li>Note that <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>.</li>
 </ul>
 
 <h3 id="availabilitycondition">AvailabilityCondition</h3>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#availabilitycondition">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#availabilitycondition">Glossary definition</a></em></p>
 
 <h4 id="purpose-1">Purpose</h4>
 <p>Temporal availability in terms of <code class="language-plaintext highlighter-rouge">Date</code>s, <code class="language-plaintext highlighter-rouge">Timeband</code>s, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>.</p>
 
 <h4 id="table-1">Table</h4>
-<p>-</p>
+
+<p><em>Table: AvailabilityCondition</em></p>
 
 <table>
   <thead>
@@ -270,7 +319,25 @@
   </thead>
   <tbody>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>FromDate</td>
       <td>optional</td>
       <td>0..1</td>
@@ -279,7 +346,7 @@
       <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ToDate</td>
       <td>optional</td>
       <td>0..1</td>
@@ -288,7 +355,7 @@
       <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ValidDayBits</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -297,7 +364,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>timebands</td>
       <td>optional</td>
       <td>0..1</td>
@@ -306,19 +373,19 @@
       <td>Can also be referenced</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td><a href="/netexRgTest/tables/Timeband.html">Timeband</a></td>
+      <td>+</td>
+      <td><a href="/netexRgTest/main/tables/Timeband.html">Timeband</a></td>
       <td>optional</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>Timeband_VersionedChildStructure</td>
       <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>TimebandRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>TimebandRefStructure</td>
       <td>Reference to a TIME BAND.</td>
       <td> </td>
@@ -349,15 +416,15 @@
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/AvailabilityCondition.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/AvailabilityCondition.xml">Template</a></em></p>
 
 <h4 id="usage-notes-1">Usage Notes</h4>
 <ul>
-  <li>Examples of use of AVAILABILITY CONDITION include ENTRANCEs, EQUIPMENTs, STOP PLACEs, etc.</li>
-  <li>AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or operating period in english) is needed, we use an <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>:</li>
+  <li>Examples of use of <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> include  <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>, facilities.</li>
+  <li>AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or “operating period” in english) is needed, we use an <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>:</li>
   <li>The referenced <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s are centrally stored in the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code>.</li>
-  <li>The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields.</li>
-  <li>ValidDayBits is required whenever the <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> is of temporal nature (more often than not). Examples include:
+  <li>The element <code class="language-plaintext highlighter-rouge">ValidDayBits</code> directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields.</li>
+  <li><code class="language-plaintext highlighter-rouge">ValidDayBits</code> is required whenever the <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> is of temporal nature (more often than not). Examples include:
     <ul>
       <li><code class="language-plaintext highlighter-rouge">ServiceJourney</code></li>
       <li><code class="language-plaintext highlighter-rouge">NoticeAssignment</code></li>
@@ -365,17 +432,20 @@
       <li><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></li>
     </ul>
   </li>
+  <li><code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>. <strong>TODO</strong> <em>Still not completely clear to me (AM) - suppose AvailabilityConditions “only summer” (FromDate/ToDate), “only school holiday period” (timebands), “only sunday” (ValidDayBits) - is each of them obliged to have ValidDayBits?</em></li>
   <li>Hint: The frames <code class="language-plaintext highlighter-rouge">TimetableFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their elements must have the same validity.</li>
   <li>id-attribute does not need to be kept stable between exports.</li>
 </ul>
 
 <h3 id="servicecalendar">ServiceCalendar</h3>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#servicecalendar">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#servicecalendar">Glossary definition</a></em></p>
 
 <h4 id="purpose-2">Purpose</h4>
-<p>Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays.</p>
+<p>Long-term planning uses calendar days that are classified as specific <code class="language-plaintext highlighter-rouge">DayType</code>s (example: weekday in school holidays). In the general NeTEx model, a <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> defines a mapping between <code class="language-plaintext highlighter-rouge">DayType</code>s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> serves only as a container for <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s, defining a mapping of <code class="language-plaintext highlighter-rouge">DayType</code>s to dates.</p>
 
 <h4 id="table-2">Table</h4>
+
+<p><em>Table: ServiceCalendar</em></p>
 
 <table>
   <thead>
@@ -392,24 +462,33 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>ServiceCalendar</td>
-      <td>expected</td>
+      <td>@id</td>
+      <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
-      <td>Name</td>
+      <td> </td>
+      <td>@version</td>
       <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>timetable year</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>FromDate</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -418,7 +497,7 @@
       <td>Beginning of timetable year</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>ToDate</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -445,7 +524,7 @@
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/ServiceCalendar.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/ServiceCalendar.xml">Template</a></em></p>
 
 <h4 id="usage-note">Usage Note</h4>
 <ul>
@@ -453,12 +532,16 @@
 </ul>
 
 <h3 id="daytype">DayType</h3>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#daytype">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#daytype">Glossary definition</a></em></p>
 
 <h4 id="purpose-3">Purpose</h4>
 <p>A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays). The <code class="language-plaintext highlighter-rouge">DayType</code>s of the Swiss profile represent national holidays.</p>
 
 <h4 id="table-3">Table</h4>
+
+<p>In Switzerland only used for holidays and the like</p>
+
+<p><em>Table: DayType</em></p>
 
 <table>
   <thead>
@@ -475,51 +558,51 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>DayType</td>
-      <td>optional</td>
+      <td>@id</td>
+      <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
-      <td>In Switzerland only used for holidays and the like</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>alternativeTexts</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>alternativeTexts_RelStructure</td>
-      <td>Additional Translations of text elements.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>AlternativeText</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>AlternativeText</td>
       <td>Alternative Text. +v1.1</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+++</td>
-      <td>Text</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
       <td>Name</td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
+      <td>German or default text</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>properties</td>
       <td>expected</td>
       <td>0..1</td>
@@ -528,16 +611,16 @@
       <td> </td>
     </tr>
     <tr>
-      <td>++</td>
+      <td>+</td>
       <td>PropertyOfDay</td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>PropertyOfDay</td>
       <td>A property which a day may possess, such as school holiday, weekday, summer, winter etc.</td>
       <td>Holidays only</td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>HolidayTypes</td>
       <td>expected</td>
       <td>0..1</td>
@@ -546,7 +629,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+++</td>
+      <td>++</td>
       <td>DayEvent</td>
       <td>optional</td>
       <td>0..1</td>
@@ -564,18 +647,7 @@
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;DayType</span>  <span class="na">id=</span><span class="s">"ch:1:DayType:Bundesfeier"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- In Switzerland only used for holidays and the like --&gt;</span>
-  <span class="nt">&lt;alternativeTexts&gt;</span>
-    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Name"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Festa nazionale<span class="nt">&lt;/Text&gt;</span>
-    <span class="nt">&lt;/AlternativeText&gt;</span>
-    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Name"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>National Day<span class="nt">&lt;/Text&gt;</span>
-    <span class="nt">&lt;/AlternativeText&gt;</span>
-    <span class="nt">&lt;AlternativeText</span> <span class="na">attributeName=</span><span class="s">"Name"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Fête nationale<span class="nt">&lt;/Text&gt;</span>
-    <span class="nt">&lt;/AlternativeText&gt;</span>
-  <span class="nt">&lt;/alternativeTexts&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Bundesfeier<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Bundesfeier<span class="c">&lt;!-- German or default text --&gt;</span><span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Festa nazionale<span class="c">&lt;!-- Italian --&gt;</span><span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Fête nationale<span class="c">&lt;!-- French --&gt;</span><span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>National Day<span class="c">&lt;!-- English --&gt;</span><span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
   <span class="nt">&lt;properties&gt;</span>
     <span class="nt">&lt;PropertyOfDay&gt;</span>
       <span class="c">&lt;!-- Holidays only --&gt;</span>
@@ -587,7 +659,7 @@
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/DayType.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/DayType.xml">Template</a></em></p>
 
 <h4 id="usage-note-1">Usage Note</h4>
 <ul>
@@ -595,12 +667,14 @@
 </ul>
 
 <h3 id="timeband">Timeband</h3>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#timeband">Glossary definition</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#timeband">Glossary definition</a></em></p>
 
 <h4 id="purpose-4">Purpose</h4>
 <p>A period of time within a day, usually defined by a start and end time.</p>
 
 <h4 id="table-4">Table</h4>
+
+<p><em>Table: Timeband</em></p>
 
 <table>
   <thead>
@@ -617,15 +691,24 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>Timeband</td>
+      <td>@id</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>StartTime</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -634,7 +717,7 @@
       <td>Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used.</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>EndTime</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -659,7 +742,7 @@
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/Timeband.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/Timeband.xml">Template</a></em></p>
 
 <h4 id="usage-notes-2">Usage Notes</h4>
 <ul>
@@ -667,15 +750,17 @@
   <li>id-attribute should be kept stable between exports.</li>
 </ul>
 
-<h2 id="daytypeassignment">DayTypeAssignment</h2>
-<p><em>→ <a href="/netexRgTest/A4_annex_glossary.html#daytypeassignment">Glossary definition</a></em></p>
+<h3 id="daytypeassignment">DayTypeAssignment</h3>
+<p><em>→ <a href="/netexRgTest/main/A4_annex_glossary.html#daytypeassignment">Glossary definition</a></em></p>
 
 <h4 id="purpose-5">Purpose</h4>
 <p>Assignment of a date to <code class="language-plaintext highlighter-rouge">DayType</code>. The <code class="language-plaintext highlighter-rouge">DayType</code>s of the Swiss profile represent national holidays.</p>
 
-<p>This assignment overrides the <code class="language-plaintext highlighter-rouge">DayType</code> specified for the day in the overall plan. (<strong>TODO</strong> should be stated more clearly / precisely) Wilfried 10.6.</p>
-
 <h4 id="table-5">Table</h4>
+
+<p>We currently use DayType to store the national holidays.</p>
+
+<p><em>Table: DayTypeAssignment</em></p>
 
 <table>
   <thead>
@@ -692,15 +777,24 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>DayTypeAssignment</td>
-      <td>expected</td>
+      <td>@id</td>
+      <td>mandatory</td>
       <td>1..1</td>
-      <td>unknown</td>
-      <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
-      <td>We currently use DayType to store the national holidays.</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>Date</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -709,7 +803,7 @@
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td> </td>
       <td>DayTypeRef</td>
       <td>mandatory</td>
       <td>1..*</td>
@@ -733,7 +827,7 @@
 
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRgTest/templates/DayTypeAssignment.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRgTest/main/templates/DayTypeAssignment.xml">Template</a></em></p>
 
 <h4 id="usage-notes-3">Usage Notes</h4>
 <ul>
@@ -747,7 +841,7 @@
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/netexRgTest/"></data>
+  <data class="u-url" href="/netexRgTest/main/"></data>
 
   <div class="wrapper">
 
